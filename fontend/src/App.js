@@ -4,7 +4,7 @@ import Webfont from "webfontloader";
 import Header from "./component/layout/Header/Header";
 import Footer from "./component/layout/Footer/Footer";
 import { useEffect } from "react";
-import LoginSignUp from "./component/User/Login/LoginSignUp";
+import Home from "./component/Home/Home";
 
 function App() {
   useEffect(() => {
@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <Route exact path="/login" component={LoginSignUp} />
+      <Route exact path="/" component={Home} />
       <Footer />
     </Router>
   );

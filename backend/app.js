@@ -14,12 +14,10 @@ app.use(fileUpload());
 const product = require("./routers/productRoute");
 const user = require("./routers/userRoute");
 const order = require("./routers/orderRoute");
-const category = require("./routers/categoryRoute");
 
 app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1/", order);
-app.use("/api/v1", category);
 
 //Middleware for Errors
 app.use(errorMiddleware);
