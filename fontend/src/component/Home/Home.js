@@ -32,7 +32,7 @@ const Home = () => {
           </a>
         </div>
 
-        <h2 className="homeHeading">Featured Products</h2>
+        <h2 className="homeHeading">sản phẩm nổi bật</h2>
         <div className="container" id="container">
           {products && products.map((product) => <Product product={product} />)}
         </div>
