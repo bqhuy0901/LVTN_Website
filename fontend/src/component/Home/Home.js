@@ -4,7 +4,6 @@ import Product from "./Product";
 import "./Home.css";
 import MetaData from "../layout/MetaData";
 import { getProduct } from "../../actions/productAction";
-import Loader from "../layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
@@ -22,12 +21,12 @@ const Home = () => {
       <Fragment>
         <MetaData tilte="HOME PAGE IS WORKING" />
         <div className="banner">
-          <p>Welcome to Ecommerce</p>
-          <h1>FIND AMAZING PRODUCTS BELOW</h1>
+          <p>Chào mừng bạn đến với Huy Khôi Shoes</p>
+          <h1>TÌM HIỂU SẢN PHẨM TUYỆT VỜI DƯỚI ĐÂY</h1>
 
           <a href="#container">
             <button>
-              Scroll <CgMouse />
+              Tìm hiểu <CgMouse />
             </button>
           </a>
         </div>

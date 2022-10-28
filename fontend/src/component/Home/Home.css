@@ -1,5 +1,5 @@
 .banner {
-  background-image: url("../../images/cover.jfif");
+  background-image: url("../assets/images/cover.jfif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,7 +19,7 @@
 }
 
 .banner > p {
-  font: 300 1.4vmax "Lucida Sans";
+  font: 300 1.4vmax "Roboto";
 }
 
 .banner > a > button {
