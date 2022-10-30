@@ -39,12 +39,10 @@ const productSchema = mongoose.Schema(
         },
       },
     ],
-    category: [
-      {
-        type: String,
-        required: [true, "Plase Enter Product Category"],
-      },
-    ],
+    category: {
+      type: String,
+      required: [true, "Plase Enter Product Category"],
+    },
     sizes: [
       {
         type: String,
