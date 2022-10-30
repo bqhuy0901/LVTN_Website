@@ -15,6 +15,7 @@ const Home = () => {
     (state) => state.products
   );
 
+ 
   useEffect(() => {
     if (error) {
       return alert.error(error);
