@@ -1,5 +1,4 @@
 .ProductDetails {
-  background-color: rgb(255, 255, 255);
   width: 100vw;
   max-width: 100%;
   padding: 6vmax;
@@ -9,7 +8,6 @@
 
 .ProductDetails > div {
   width: 100%;
-  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -23,7 +21,7 @@
 }
 
 .CarouselImage {
-  width: 20vmax;
+  width: 35vmax;
 }
 
 .detailsBlock-1 > h2 {
@@ -56,7 +54,7 @@
 }
 
 .detailsBlock-3 > h1 {
-  color: rgba(17, 17, 17, 0.795);
+  color: #ee4d2d;
   font: 400 1.8vmax "Franklin Gothic Medium";
   margin: 1vmax 0;
 }
@@ -94,7 +92,6 @@
   transition: all 0.5s;
   background-color: tomato;
   font: 500 0.7vmax "Roboto";
-  border-radius: 20px;
   padding: 0.5vmax 2vmax;
   margin: 1vmax;
   outline: none;

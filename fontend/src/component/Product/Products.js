@@ -11,10 +11,10 @@ import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 
 const categories = [
-  "Giày bóng đá",
-  "Giày bóng rỗ",
-  "Giày chạy bộ",
-  "Giày thể thao",
+  "giay bong da",
+  "giay bong ro",
+  "giay chay bo",
+  "giay the thao",
 ];
 
 const brands = ["Nike", "Adidas", "Mizuno", "Puma"];
