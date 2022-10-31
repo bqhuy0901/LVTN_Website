@@ -5,9 +5,11 @@ import Header from "./component/layout/Header/Header";
 import Footer from "./component/layout/Footer/Footer";
 import { useEffect } from "react";
 import Home from "./component/Home/Home";
-import ProductDetails from "./component/Product/ProductDetails"
+import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
 import Search from "./component/Product/Search";
+import LoginSignUp from "./component/User/Login/LoginSignUp";
+
 function App() {
   useEffect(() => {
     Webfont.load({
@@ -19,10 +21,16 @@ function App() {
     <Router>
       <Header />
       <Route exact path="/" component={Home} />
-      <Route exact path="/products" component={Products}/>
-      <Route path="/products/:keyword" component={Products}/>
-      <Route exact path="/search" component={Search}/>
-      <Route exact path="/product/:id" component={ProductDetails}/>
+
+      <Route exact path="/products" component={Products} />
+
+      <Route path="/products/:keyword" component={Products} />
+
+      <Route exact path="/search" component={Search} />
+
+      <Route exact path="/product/:id" component={ProductDetails} />
+
+      <Route exact path="/login" component={LoginSignUp} />
       <Footer />
     </Router>
   );

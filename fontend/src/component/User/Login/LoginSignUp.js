@@ -1,15 +1,15 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
-import Loader from "../../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
-import { useDispatch, useSelector } from "react-redux";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import { useSelector, useDispatch } from "react-redux";
+import Loader from "../../layout/Loader/Loader";
 import { clearErrors, login, register } from "../../../actions/userAction";
 import { useAlert } from "react-alert";
 
-const LoginSignUp = ({ history, location }) => {
+const LoginSignUp = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -32,7 +32,7 @@ const LoginSignUp = ({ history, location }) => {
 
   const { name, email, password } = user;
 
-  const [avatar, setAvatar] = useState("/Profile.png");
+  const [avatar, setAvatar] = useState();
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
   const loginSubmit = (e) => {
@@ -69,8 +69,6 @@ const LoginSignUp = ({ history, location }) => {
     }
   };
 
-  const redirect = location.search ? location.search.split("=")[1] : "/account";
-
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -78,9 +76,9 @@ const LoginSignUp = ({ history, location }) => {
     }
 
     if (isAuthenticated) {
-      history.push(redirect);
+      history.push("/account");
     }
-  }, [dispatch, error, alert, history, isAuthenticated, redirect]);
+  }, [dispatch, error, alert, isAuthenticated, history]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -138,6 +136,7 @@ const LoginSignUp = ({ history, location }) => {
                 <Link to="/password/forgot">Forget Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
               </form>
+
               <form
                 className="signUpForm"
                 ref={registerTab}
