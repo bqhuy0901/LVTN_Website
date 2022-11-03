@@ -71,7 +71,7 @@ exports.logout = catchAsynsError(async (req, res, next) => {
 
 ///Quen Password
 exports.forgotPassword = catchAsynsError(async (req, res, next) => {
-  const user = await User.findOne({ emai: req.body.emai });
+  const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
     return next(new errorHandler(("User not found", 404)));
@@ -82,22 +82,21 @@ exports.forgotPassword = catchAsynsError(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
-  const message = `Your password rest token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requestd this email then, please ignore it `;
+  const message = `Your password rest token is :- \n\n ${resetPasswordUrl} \n\n If you have not requestd this email then, please ignore it `;
 
   try {
     await sendEmail({
       email: user.email,
-      subject: `Ecommerce Password Recovery`,
+      subject: `Khôi phục mật khẩu`,
       message,
     });
 
     res.status(200).json({
       success: true,
-      message: `Email sent to${user.email} successfully`,
+      message: `
+      Thư điện tử đã được gửi đến${user.email} thành công`,
     });
   } catch (error) {
     user.resetPasswordToken = undefined;
