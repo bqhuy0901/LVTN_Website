@@ -20,10 +20,10 @@ const Profile = ({ history }) => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`${user.name}'s Profile`} />
+          <MetaData title={`${user.name} Profile`} />
           <div className="profileContainer">
             <div>
-              <h1>My Profile</h1>
+              <h1>HỒ SƠ</h1>
               <img src={user.avatar.url} alt={user.name} />
               <Link to="/me/update">Sửa Thông Tin</Link>
             </div>
@@ -38,7 +38,7 @@ const Profile = ({ history }) => {
               </div>
               <div>
                 <h4>Đã tham gia</h4>
-                <p>{String(user.createdAt).substring(0, 10)}</p>
+                <p>{String(user.createAt).substring(0, 10)}</p>
               </div>
 
               <div>

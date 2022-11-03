@@ -157,11 +157,11 @@ exports.updatePassword = catchAsynsError(async (req, res, next) => {
   const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
-    return next(new errorHandler("Password cu khong dung!"), 400);
+    return next(new errorHandler("Mật Khẩu cũ không chính xác!"), 400);
   }
 
   if (req.body.newPassword !== req.body.confirmPassword) {
-    return next(new errorHandler("Password Khong hop le!"), 400);
+    return next(new errorHandler("Mật Khẩu không hợp lệ!"), 400);
   }
 
   user.password = req.body.newPassword;
