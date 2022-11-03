@@ -171,14 +171,31 @@ exports.updatePassword = catchAsynsError(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-//Update User Profile --Admin
+//Update User Profile
 exports.updateProfile = catchAsynsError(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
   };
 
-  //We will add cloudinary later
+  if (req.body.avatar !== "") {
+    const user = await User.findById(req.User.id);
+
+    const imageId = user.avatar.public_id;
+
+    await cloudinary.v2.uploader.destroy(imageId);
+
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+
+    newUserData.avatar = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+  }
 
   const user = await User.findByIdAndUpdate(req.User.id, newUserData, {
     new: true,
