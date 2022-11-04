@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "./CartItemCard.css"
+import "../CartItemCard/CartItemCard.css"
 const CartItemCard = ({ item, deleteCartItems }) => {
     return (
         <div className="CartItemCard">

@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import CheckoutSteps from "../Cart/CheckoutSteps";
+import CheckoutSteps from "../CheckOutSteps/CheckoutSteps";
 import { useSelector } from "react-redux";
-import MetaData from "../layout/MetaData";
-import "./ConfirmOrder.css";
+import MetaData from "../../layout/MetaData";
+import "../ConfirmOrder/ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 const ConfirmOrder = ({ history }) => {

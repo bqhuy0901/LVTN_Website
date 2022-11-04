@@ -1,7 +1,7 @@
 import React from 'react'
 import { Fragment } from 'react'
 import "./Cart.css"
-import CartItemCard from "./CartItemCard"
+import CartItemCard from "../Cart/CartItemCard/CartItemCard"
 import { useSelector, useDispatch } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import { Link } from "react-router-dom"
