@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     Webfont.load({
-      families: ["Roboto", "Droid Sans", "Chilanka"],
+      families: ["Roboto"],
     });
 
     store.dispatch(loadUser());
