@@ -1,27 +1,68 @@
 import React from "react";
 import "./Footer.css";
-
 const Footer = () => {
   return (
-    <footer id="footer">
-      <div className="leftFooter">
-        <h4>DOWNLOAD OUR APP</h4>
-        <p>Download App for Android and IOS mobile phone</p>
+
+    <footer className="footer-distributed">
+
+      <div className="footer-left">
+
+        <h3>SN3AKER<span>VIBES</span></h3>
+
+        <p className="footer-links">
+          <a href="#" className="link-1">Home</a>
+
+          <a href="#">Blog</a>
+
+          <a href="#">Pricing</a>
+
+          <a href="#">About</a>
+
+          <a href="#">Faq</a>
+
+          <a href="#">Contact</a>
+        </p>
+
+        <p className="footer-company-name">SN3AKER VIBES © 2022</p>
       </div>
 
-      <div className="midFooter">
-        <h1>ECOMMERCE.</h1>
-        <p>High Quality is our first priority</p>
+      <div className="footer-center">
 
-        <p>Copyrights 2021 &copy; MeAbhiSingh</p>
+        <div>
+          <i className="fa fa-map-marker">
+          </i>
+          <p><span>180 Cao Lỗ</span> Phường 4, Quận 8, Thành phố Hồ Chí Minh</p>
+        </div>
+
+        <div>
+          <i className="fa fa-phone"></i>
+          <p>090xxxxxx</p>
+        </div>
+
+        <div>
+          <i className="fa fa-envelope"></i>
+          <p><a href="mailto:support@company.com">support@company.com</a></p>
+        </div>
+
       </div>
 
-      <div className="rightFooter">
-        <h4>Follow Us</h4>
-        <a href="http://instagram.com/meabhisingh">Instagram</a>
-        <a href="http://youtube.com/6packprogramemr">Youtube</a>
-        <a href="http://instagram.com/meabhisingh">Facebook</a>
+      <div className="footer-right">
+
+        <p className="footer-company-about">
+          <span>About </span>
+          Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+        </p>
+
+        <div className="footer-icons">
+
+          <a href="#"><i className="fa fa-facebook"></i></a>
+          <a href="#"><i className="fa fa-twitter"></i></a>
+          <a href="#"><i className="fa fa-github"></i></a>
+
+        </div>
+
       </div>
+
     </footer>
   );
 };
