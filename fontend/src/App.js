@@ -27,7 +27,9 @@ function App() {
 
   useEffect(() => {
     Webfont.load({
-      families: ["Roboto"],
+      google: {
+        families: ["Roboto", "Droid Sans", "Chilanka"],
+      },
     });
 
     store.dispatch(loadUser());
@@ -54,9 +56,10 @@ function App() {
 
       <Route exact path="/login" component={LoginSignUp} />
 
-      <Route exact path="/cart" component={Cart}/>
-      <ProtecteRoute exact path="/shipping" component={Shipping}/>
-      <ProtecteRoute exact path="/order/confirm" component={ConfirmOrder}/>
+      <Route exact path="/cart" component={Cart} />
+      <ProtecteRoute exact path="/shipping" component={Shipping} />
+      <ProtecteRoute exact path="/order/confirm" component={ConfirmOrder} />
+
       <Footer />
     </Router>
   );
