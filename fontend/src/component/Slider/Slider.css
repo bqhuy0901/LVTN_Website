@@ -1,7 +1,6 @@
 .mySwiper {
-  height: 80vh;
-  width: 85%;
-  margin-top: 4%;
+  height: 100%;
+  width: 100%;
 }
 
 .swiperSlide > img {

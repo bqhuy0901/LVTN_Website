@@ -34,14 +34,14 @@ const ProductDetails = ({ match }) => {
   };
   const [quantity, setQuantity] = useState(1);
 
-  const increaseQuatity = () => {
+  const increaseQuantity = () => {
     if (product.Stock <= quantity) return;
 
     const qty = quantity + 1;
     setQuantity(qty);
   };
 
-  const decreaseQuatity = () => {
+  const decreaseQuantity = () => {
     if (1 >= quantity) return;
 
     const qty = quantity - 1;
@@ -87,12 +87,10 @@ const ProductDetails = ({ match }) => {
                 <h1>{`${product.price}đ`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button onClick={decreaseQuatity}>-</button>
-                    <input type="number" value={quantity} />
-                    <button onClick={increaseQuatity}>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input type="number" value={quantity} readOnly />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-
-                  
                   <button onClick={addToCartHandler}>Thêm Vào Giỏ Hàng</button>
                 </div>
                 <p>
