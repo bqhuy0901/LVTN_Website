@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Webfont from "webfontloader";
 import Header from "./component/layout/Header/Header";
 import Footer from "./component/layout/Footer/Footer";
 import { useEffect } from "react";
@@ -26,12 +25,6 @@ function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    Webfont.load({
-      google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
-      },
-    });
-
     store.dispatch(loadUser());
   }, []);
 

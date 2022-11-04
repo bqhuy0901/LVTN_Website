@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from "react";
-
 import Product from "./ProductCard";
 import "./Home.css";
 import MetaData from "../layout/MetaData";
@@ -29,13 +28,11 @@ const Home = () => {
         <Fragment>
           <MetaData tilte="HOME PAGE IS WORKING" />
           <Slider />
-
           <h2 className="homeHeading">sản phẩm nổi bật</h2>
           <div className="container" id="container">
             {products &&
               products.map((product) => <Product product={product} />)}
           </div>
-
           <h2 className="homeHeading">sản phẩm Sales</h2>
           <div className="container" id="container">
             {products &&
