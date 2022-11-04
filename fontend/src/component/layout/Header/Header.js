@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";
-import "./Header.css";
+//import "./Header.css";
 import logo from "../../assets/images/logo.png";
 
 const options = {

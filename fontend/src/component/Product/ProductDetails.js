@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { Rating } from "@material-ui/lab";
@@ -8,6 +8,7 @@ import Loader from "../layout/Loader/Loader";
 import ReviewCard from "../Product/ReviewCard";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
+import { addItemsToCart } from "../../actions/cartAction";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -30,6 +31,26 @@ const ProductDetails = ({ match }) => {
     value: product.ratings,
     readOnly: true,
     precision: 0.5,
+  };
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    if (product.Stock <= quantity) return;
+
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(match.params.id, quantity));
+    alert.success("Item Added to Cart");
   };
 
   return (
@@ -66,17 +87,14 @@ const ProductDetails = ({ match }) => {
                 <h1>{`${product.price}đ`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button>-</button>
-                    <input value="1" type="number" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input type="number" value={quantity} readOnly />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-
-                  {""}
-                  <button>Thêm Vào Giỏ Hàng</button>
+                  <button onClick={addToCartHandler}>Thêm Vào Giỏ Hàng</button>
                 </div>
-
                 <p>
-                  Trạng thái : {""}
+                  Trạng thái : 
                   <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
                     {product.Stock < 1 ? "Hết Hàng" : "Sản phẩm có sẵn"}
                   </b>
