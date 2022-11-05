@@ -37,7 +37,7 @@ const ConfirmOrder = ({ history }) => {
 
   return (
     <Fragment>
-      <MetaData title="Confirm Order" />
+      <MetaData title="Xác Nhận Đơn Hàng" />
       <CheckoutSteps activeStep={1} />
       <div className="confirmOrderPage">
         <div>
@@ -80,14 +80,14 @@ const ConfirmOrder = ({ history }) => {
         {/*  */}
         <div>
           <div className="orderSummary">
-            <Typography>Order Summery</Typography>
+            <Typography>Chi Tiết Hóa Đơn</Typography>
             <div>
               <div>
-                <p>Subtotal:</p>
+                <p>Tổng Phụ:</p>
                 <span>{subtotal} đ</span>
               </div>
               <div>
-                <p>Shipping Charges:</p>
+                <p>Chi Phí Vận Chuyển:</p>
                 <span>{shippingCharges} đ</span>
               </div>
               <div>
@@ -98,12 +98,12 @@ const ConfirmOrder = ({ history }) => {
 
             <div className="orderSummaryTotal">
               <p>
-                <b>Total:</b>
+                <b>Toàn Bộ:</b>
               </p>
               <span>{totalPrice} đ</span>
             </div>
 
-            <button onClick={proceedToPayment}>Proceed To Payment</button>
+            <button onClick={proceedToPayment}>Tiến Trình Thanh Toán</button>
           </div>
         </div>
       </div>

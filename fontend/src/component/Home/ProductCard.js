@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
       <p>{product.name}</p>
       <div>
         <ReactStars {...options} />
-        <span>({product.numberOfReviews} Reviews)</span>
+        <span>{product.numberOfReviews} (Đánh giá)</span>
       </div>
       <span>{`${product.price} đ`}</span>
     </Link>

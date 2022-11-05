@@ -84,7 +84,7 @@ const UpdateProfile = ({ history }) => {
           <MetaData title="Update Profile" />
           <div className="updateProfileContainer">
             <div className="updateProfileBox">
-              <h2 className="updateProfileHeading">Update Profile</h2>
+              <h2 className="updateProfileHeading">Cập Nhật Hồ Sơ</h2>
               <form
                 className="updateProfileForm"
                 encType="multipart/form-data"

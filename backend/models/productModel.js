@@ -55,10 +55,10 @@ const productSchema = mongoose.Schema(
         required: [true, "Plase Enter Product Color"],
       },
     ],
-    weight: {
-      type: Number,
-      required: [true, "Plase Enter Product Size"],
-    },
+    // weight: {
+    //   type: Number,
+    //   required: [true, "Plase Enter Product Weight"],
+    // },
 
     Stock: {
       type: String,
