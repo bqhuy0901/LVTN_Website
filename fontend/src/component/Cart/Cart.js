@@ -16,14 +16,14 @@ const Cart = ({ history }) => {
         if (stock <= quantity) {
             return;
         }
-        dispatch(addItemsToCart(id, newQty))
+        dispatch(addItemsToCart(id, newQty));
     };
     const decreaseQuantity = (id, quantity) => {
         const newQty = quantity - 1;
         if (1 >= quantity) {
             return;
         }
-        dispatch(addItemsToCart(id, newQty))
+        dispatch(addItemsToCart(id, newQty));
     };
 
     const deleteCartItems = (id) => {
@@ -31,7 +31,7 @@ const Cart = ({ history }) => {
     };
 
     const checkoutHandler = () => {
-        history.push("/login?redirect=shipping")
+        history.push("/login?redirect=shipping");
     };
     return (
         <Fragment>
