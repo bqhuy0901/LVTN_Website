@@ -22,7 +22,7 @@ const ConfirmOrder = ({ history }) => {
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.ward}, ${shippingInfo.district}`;
 
-  const proceedToPayment = () => {
+  const proceedToPayment = ({}) => {
     const data = {
       subtotal,
       shippingCharges,

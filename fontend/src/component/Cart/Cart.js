@@ -33,6 +33,13 @@ const Cart = ({ history }) => {
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
   };
+
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 9,
+  });
+
   return (
     <Fragment>
       {cartItems.length === 0 ? (
@@ -46,9 +53,9 @@ const Cart = ({ history }) => {
         <Fragment>
           <div className="cartPage">
             <div className="cartHeader">
-              <p>Product</p>
-              <p>Quantity</p>
-              <p>Subtotal</p>
+              <p>Sản Phẩm</p>
+              <p>Số Lượng</p>
+              <p>Tổng phụ</p>
             </div>
             {cartItems &&
               cartItems.map((item) => (
@@ -75,23 +82,25 @@ const Cart = ({ history }) => {
                       +
                     </button>
                   </div>
-                  <p className="cartSubtotal">{`${
+                  <p className="cartSubtotal">{`${formatter.format(
                     item.price * item.quantity
-                  } đ`}</p>
+                  )} `}</p>
                 </div>
               ))}
             <div className="cartGrossProfit">
               <div></div>
               <div className="cartGrossProfitBox">
-                <p>Tổng cộng</p>
-                <p style={{ color: "red" }}>{`${cartItems.reduce(
-                  (acc, item) => acc + item.quantity * item.price,
-                  0
-                )} đ`}</p>
+                <p>Tổng Tiền</p>
+                <p style={{ color: "red" }}>{`${formatter.format(
+                  cartItems.reduce(
+                    (acc, item) => acc + item.price * item.quantity,
+                    0
+                  )
+                )} `}</p>
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button onClick={checkoutHandler}>Check Out</button>
+                <button onClick={checkoutHandler}>Thanh Toán</button>
               </div>
             </div>
           </div>

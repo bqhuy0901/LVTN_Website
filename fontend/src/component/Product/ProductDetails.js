@@ -53,6 +53,12 @@ const ProductDetails = ({ match }) => {
     alert.success("Item Added to Cart");
   };
 
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 9,
+  });
+
   return (
     <Fragment>
       {loading ? (
@@ -84,7 +90,7 @@ const ProductDetails = ({ match }) => {
                 <span>({product.numOfReviews} Reviews)</span>
               </div>
               <div className="detailsBlock-3">
-                <h1>{`${product.price}đ`}</h1>
+                <h1>{`${formatter.format(product.price)}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
@@ -94,7 +100,7 @@ const ProductDetails = ({ match }) => {
                   <button onClick={addToCartHandler}>Thêm Vào Giỏ Hàng</button>
                 </div>
                 <p>
-                  Trạng thái : 
+                  Trạng thái :
                   <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
                     {product.Stock < 1 ? "Hết Hàng" : "Sản phẩm có sẵn"}
                   </b>

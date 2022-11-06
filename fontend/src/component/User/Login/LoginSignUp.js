@@ -69,6 +69,7 @@ const LoginSignUp = ({ history, location }) => {
     }
   };
 
+
   const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
