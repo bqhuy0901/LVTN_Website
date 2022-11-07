@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./Products.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getProduct } from "../../actions/productAction";
-import Loader from "../layout/Loader/Loader";
-import ProductCard from "../Home/ProductCard";
+import { clearErrors, getProduct } from "../../../actions/productAction";
+import Loader from "../../layout/Loader/Loader";
+import ProductCard from "../../Home/ProductCard";
 import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import { useAlert } from "react-alert";
-import MetaData from "../layout/MetaData";
+import MetaData from "../../layout/MetaData";
 
 const categories = [
   "giay bong da",
@@ -69,12 +69,6 @@ const Products = ({ match }) => {
 
   let count = filteredProductsCount;
 
-  const formatter = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    maximumFractionDigits: 9,
-  });
-
   return (
     <Fragment>
       {loading ? (
@@ -93,11 +87,12 @@ const Products = ({ match }) => {
           <div className="filterBox">
             <Typography>MỨC GIÁ</Typography>
             <Slider
+              size="large"
               value={price}
               onChange={priceHandler}
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
-              min={0}
+              min={500000}
               max={4000000}
             />
 

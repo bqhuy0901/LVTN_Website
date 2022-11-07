@@ -4,9 +4,9 @@ import Header from "./component/layout/Header/Header";
 import Footer from "./component/layout/Footer/Footer";
 import { useEffect, useState } from "react";
 import Home from "./component/Home/Home";
-import ProductDetails from "./component/Product/ProductDetails";
-import Products from "./component/Product/Products";
-import Search from "./component/Product/Search";
+import ProductDetails from "./component/Product/ProductDetails/ProductDetails";
+import Products from "./component/Product/Products/Products";
+import Search from "./component/Product/Search/Search";
 import LoginSignUp from "./component/User/Login/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
@@ -56,7 +56,7 @@ function App() {
       <Route exact path="/products" component={Products} />
       <Route path="/products/:keyword" component={Products} />
 
-      <Route path="/about" component={About}/>
+      <Route path="/about" component={About} />
       <Route exact path="/contact" component={Contact} />
 
       <Route exact path="/search" component={Search} />

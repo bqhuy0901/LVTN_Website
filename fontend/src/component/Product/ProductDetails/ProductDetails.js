@@ -3,13 +3,12 @@ import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { Rating } from "@material-ui/lab";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getProductDetails } from "../../actions/productAction";
-import Loader from "../layout/Loader/Loader";
-import ReviewCard from "../Product/ReviewCard";
+import { clearErrors, getProductDetails } from "../../../actions/productAction";
+import Loader from "../../layout/Loader/Loader";
+import ReviewCard from "../../Product/ReviewCard/ReviewCard";
 import { useAlert } from "react-alert";
-import MetaData from "../layout/MetaData";
-import { addItemsToCart } from "../../actions/cartAction";
-import { Link } from "react-router-dom";
+import MetaData from "../../layout/MetaData";
+import { addItemsToCart } from "../../../actions/cartAction";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
