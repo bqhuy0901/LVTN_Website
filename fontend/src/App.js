@@ -21,10 +21,11 @@ import ResetPassword from "./component/User/ResetPassword/ResetPassword";
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder/ConfirmOrder";
-import axios from "axios";
 import Payment from "./component/Cart/Payment/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import OrderSuccess from "./component/Cart/OrderSuccess/OrderSuccess";
 
 // import Dashboard from "./component/Admin/Dashboard/Dashboard";
 function App() {
@@ -36,12 +37,12 @@ function App() {
     const { data } = await axios.get("/api/v1/stripeapikey");
 
     setStripeApiKey(data.stripeApiKey);
-
-    getStripeApiKey();
   }
 
   useEffect(() => {
     store.dispatch(loadUser());
+
+    getStripeApiKey();
   }, []);
 
   return (
@@ -66,6 +67,7 @@ function App() {
       <Route exact path="/login" component={LoginSignUp} />
 
       <Route exact path="/cart" component={Cart} />
+
       <ProtecteRoute exact path="/shipping" component={Shipping} />
       <ProtecteRoute exact path="/order/confirm" component={ConfirmOrder} />
 
@@ -74,6 +76,8 @@ function App() {
           <ProtecteRoute exact path="/process/payment" component={Payment} />
         </Elements>
       )}
+
+      <ProtecteRoute exact path="/success" component={OrderSuccess} />
 
       {/* <ProtecteRoute exact path="/admin/dashboard" component={Dashboard} /> */}
 

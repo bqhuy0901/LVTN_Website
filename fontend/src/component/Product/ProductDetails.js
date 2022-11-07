@@ -9,6 +9,7 @@ import ReviewCard from "../Product/ReviewCard";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import { addItemsToCart } from "../../actions/cartAction";
+import { Link } from "react-router-dom";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
