@@ -11,6 +11,7 @@ const Cart = ({ history }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
+
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
@@ -26,9 +27,11 @@ const Cart = ({ history }) => {
     dispatch(addItemsToCart(id, newQty));
   };
 
+
   const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
   };
+
 
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
@@ -39,6 +42,7 @@ const Cart = ({ history }) => {
     currency: "VND",
     maximumFractionDigits: 9,
   });
+
 
   return (
     <Fragment>

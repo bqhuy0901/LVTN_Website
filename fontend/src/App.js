@@ -21,6 +21,8 @@ import ResetPassword from "./component/User/ResetPassword/ResetPassword";
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder/ConfirmOrder";
+import About from "./component/layout/About/About";
+import Contact from "./component/layout/Contact/Contact";
 import Payment from "./component/Cart/Payment/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -28,6 +30,7 @@ import axios from "axios";
 import OrderSuccess from "./component/Cart/OrderSuccess/OrderSuccess";
 
 // import Dashboard from "./component/Admin/Dashboard/Dashboard";
+
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
@@ -52,6 +55,9 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/products" component={Products} />
       <Route path="/products/:keyword" component={Products} />
+
+      <Route path="/about" component={About}/>
+      <Route exact path="/contact" component={Contact} />
 
       <Route exact path="/search" component={Search} />
 

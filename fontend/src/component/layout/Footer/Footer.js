@@ -52,7 +52,7 @@ const Footer = () => {
         <div>
           <FaEnvelope />
           <p>
-            <a href="mailto:support@company.com">support@company.com</a>
+            <a href="mailto:shoeshop@gmail.com">shoeshop@gmail.com</a>
           </p>
         </div>
       </div>
@@ -60,7 +60,7 @@ const Footer = () => {
       <div className="footer-right">
         <p className="footer-company-about">
           <span>About </span>
-          Được ra đời từ năm 2013 với mong muốn đem lại cho các bạn đam mê túc
+          Được ra đời từ năm 2022 với mong muốn đem lại cho các bạn đam mê túc
           cầu giáo những đôi giày bóng đá chính hãng “CHẤT NHẤT” với giá cả “TỐT
           NHẤT” thị trường, từ những thương hiệu hàng đầu thế giới như NIKE,
           ADIDAS, PUMA, MIZUNO, ASICS, DESPORTE, JOMA, ATHLETA, X-MUNICH, GRAND
