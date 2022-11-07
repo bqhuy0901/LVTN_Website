@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./component/layout/Header/Header";
 import Footer from "./component/layout/Footer/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Home from "./component/Home/Home";
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
@@ -23,11 +23,29 @@ import Shipping from "./component/Cart/Shipping/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder/ConfirmOrder";
 import About from "./component/layout/About/About";
 import Contact from "./component/layout/Contact/Contact";
+import Payment from "./component/Cart/Payment/Payment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import OrderSuccess from "./component/Cart/OrderSuccess/OrderSuccess";
+
+// import Dashboard from "./component/Admin/Dashboard/Dashboard";
+
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+
+    setStripeApiKey(data.stripeApiKey);
+  }
+
   useEffect(() => {
     store.dispatch(loadUser());
+
+    getStripeApiKey();
   }, []);
 
   return (
@@ -55,8 +73,19 @@ function App() {
       <Route exact path="/login" component={LoginSignUp} />
 
       <Route exact path="/cart" component={Cart} />
+
       <ProtecteRoute exact path="/shipping" component={Shipping} />
       <ProtecteRoute exact path="/order/confirm" component={ConfirmOrder} />
+
+      {stripeApiKey && (
+        <Elements stripe={loadStripe(stripeApiKey)}>
+          <ProtecteRoute exact path="/process/payment" component={Payment} />
+        </Elements>
+      )}
+
+      <ProtecteRoute exact path="/success" component={OrderSuccess} />
+
+      {/* <ProtecteRoute exact path="/admin/dashboard" component={Dashboard} /> */}
 
       <Footer />
     </Router>

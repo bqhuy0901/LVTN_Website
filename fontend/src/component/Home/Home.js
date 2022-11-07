@@ -33,11 +33,6 @@ const Home = () => {
             {products &&
               products.map((product) => <Product product={product} />)}
           </div>
-          <h2 className="homeHeading">sản phẩm Sales</h2>
-          <div className="container" id="container">
-            {products &&
-              products.map((product) => <Product product={product} />)}
-          </div>
         </Fragment>
       )}
     </Fragment>

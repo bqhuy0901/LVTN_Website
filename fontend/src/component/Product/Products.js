@@ -69,6 +69,12 @@ const Products = ({ match }) => {
 
   let count = filteredProductsCount;
 
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 9,
+  });
+
   return (
     <Fragment>
       {loading ? (
@@ -92,7 +98,7 @@ const Products = ({ match }) => {
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={10000000}
+              max={4000000}
             />
 
             <Typography>LOẠI GIÀY</Typography>
