@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./component/layout/Header/Header";
 import Footer from "./component/layout/Footer/Footer";
 import { useEffect, useState } from "react";
@@ -28,8 +28,11 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import OrderSuccess from "./component/Cart/OrderSuccess/OrderSuccess";
-
-// import Dashboard from "./component/Admin/Dashboard/Dashboard";
+import MyOrder from "./component/Order/MyOrder/MyOrder";
+import OrderDetails from "./component/Order/OrderDetails/OrderDetails";
+import Dashboard from "./component/Admin/Dashboard/Dashboard";
+import ProductList from "./component/Admin/ProductList/ProductList";
+import NewProduct from "./component/Admin/NewProduct/NewProduct";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -75,7 +78,6 @@ function App() {
       <Route exact path="/cart" component={Cart} />
 
       <ProtecteRoute exact path="/shipping" component={Shipping} />
-      <ProtecteRoute exact path="/order/confirm" component={ConfirmOrder} />
 
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
@@ -84,8 +86,34 @@ function App() {
       )}
 
       <ProtecteRoute exact path="/success" component={OrderSuccess} />
+      <ProtecteRoute exact path="/orders" component={MyOrder} />
 
-      {/* <ProtecteRoute exact path="/admin/dashboard" component={Dashboard} /> */}
+      <Switch>
+        <ProtecteRoute exact path="/order/confirm" component={ConfirmOrder} />
+
+        <ProtecteRoute exact path="/order/:id" component={OrderDetails} />
+      </Switch>
+
+      <ProtecteRoute
+        isAdmin={true}
+        exact
+        path="/admin/dashboard"
+        component={Dashboard}
+      />
+
+      <ProtecteRoute
+        isAdmin={true}
+        exact
+        path="/admin/products"
+        component={ProductList}
+      />
+
+      <ProtecteRoute
+        isAdmin={true}
+        exact
+        path="/admin/product"
+        component={NewProduct}
+      />
 
       <Footer />
     </Router>

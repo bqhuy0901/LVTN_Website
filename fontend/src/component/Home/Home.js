@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import Product from "./ProductCard";
+import ProductCard from "./ProductCard";
 import "./Home.css";
 import MetaData from "../layout/MetaData";
 import { clearErrors, getProduct } from "../../actions/productAction";
@@ -31,7 +31,9 @@ const Home = () => {
           <h2 className="homeHeading">sản phẩm nổi bật</h2>
           <div className="container" id="container">
             {products &&
-              products.map((product) => <Product product={product} />)}
+              products.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
           </div>
         </Fragment>
       )}

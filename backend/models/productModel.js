@@ -43,18 +43,18 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Plase Enter Product Category"],
     },
-    sizes: [
-      {
-        type: String,
-        required: [true, "Plase Enter Product Size"],
-      },
-    ],
-    colors: [
-      {
-        type: String,
-        required: [true, "Plase Enter Product Color"],
-      },
-    ],
+    // sizes: [
+    //   {
+    //     type: String,
+    //     required: [true, "Plase Enter Product Size"],
+    //   },
+    // ],
+    // colors: [
+    //   {
+    //     type: String,
+    //     required: [true, "Plase Enter Product Color"],
+    //   },
+    // ],
     // weight: {
     //   type: Number,
     //   required: [true, "Plase Enter Product Weight"],

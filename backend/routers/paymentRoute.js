@@ -8,6 +8,6 @@ const {
 
 router.route("/payment/process").post(isAuthenticcatedUser, processPayment);
 
-router.route("/stripeapikey").post(isAuthenticcatedUser, sendStripeApiKey);
+router.route("/stripeapikey").get(isAuthenticcatedUser, sendStripeApiKey);
 
 module.exports = router;
