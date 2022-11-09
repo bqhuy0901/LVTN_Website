@@ -2,9 +2,35 @@ const Product = require("../models/productModel");
 const errorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("../middlewares/catchAsynsError");
 const ApiFeatures = require("../utils/apiFeatures");
+const cloudinary = require("cloudinary");
+const { urlencoded } = require("body-parser");
 
 //Create Product - Admin
 exports.createProduct = catchAsyncError(async (req, res, next) => {
+  let images = [];
+
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+
+  const imagesLinks = [];
+
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "products",
+    });
+
+    imagesLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+
+  req.body.images = imagesLinks;
+  req.body.user = req.User.id;
+
   const product = await Product.create(req.body);
   res.status(201).json({
     success: true,
@@ -54,7 +80,7 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
-    return next(new errorHandler("Product not found", 404));
+    return next(new errorHandler("Không có Sản phẩm này", 404));
   }
 
   res.status(200).json({
@@ -69,7 +95,38 @@ exports.updateProduct = catchAsyncError(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
 
   if (!product) {
-    return next(new errorHandler("Product not found", 404));
+    return next(new errorHandler("Không có Sản phẩm này", 404));
+  }
+
+  // Images Start Here
+  let images = [];
+
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+
+  if (images !== undefined) {
+    // Deleting Images From Cloudinary
+    for (let i = 0; i < product.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+    }
+
+    const imagesLinks = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
+
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+
+    req.body.images = imagesLinks;
   }
 
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -90,14 +147,19 @@ exports.deleteProduct = catchAsyncError(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
-    return next(new errorHandler("Product not found", 404));
+    return next(new errorHandler("Không có Sản phẩm này", 404));
+  }
+
+  //Xoa hinh anh tren Cloudinary
+  for (let i = 0; i < product.length; i++) {
+    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
   }
 
   await product.remove();
 
   res.status(200).json({
     success: true,
-    message: "Product Delete Sucess",
+    message: "Sản phẩm Xóa Sucess",
   });
 });
 
@@ -148,7 +210,7 @@ exports.getAllReview = catchAsyncError(async (req, res, next) => {
   const product = await Product.findById(req.query.productId);
 
   if (!product) {
-    return next(new errorHandler("Product not Found", 404));
+    return next(new errorHandler("Không có Sản phẩm này", 404));
   }
 
   res.status(200).json({
@@ -162,7 +224,7 @@ exports.deleteReview = catchAsyncError(async (req, res, next) => {
   const product = await Product.findById(req.query.productId);
 
   if (!product) {
-    return next(new errorHandler("Product not Found", 404));
+    return next(new errorHandler("Không có Sản phẩm này", 404));
   }
 
   const reviews = product.reviews.filter(

@@ -66,7 +66,6 @@ const MyOrder = () => {
         itemsQty: item.orderItems.length,
         id: item._id,
         status: item.orderStatus,
-
         amount: item.totalPrice,
       });
     });
