@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./UpdateProfile.css";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FaceIcon from "@material-ui/icons/Face";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../layout/Loader/Loader";
@@ -21,7 +20,6 @@ const UpdateProfile = ({ history }) => {
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
 
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
@@ -31,7 +29,6 @@ const UpdateProfile = ({ history }) => {
     const myForm = new FormData();
 
     myForm.set("name", name);
-    myForm.set("email", email);
     myForm.set("avatar", avatar);
     dispatch(updateProfile(myForm));
   };
@@ -54,7 +51,6 @@ const UpdateProfile = ({ history }) => {
   useEffect(() => {
     if (user) {
       setName(user.name);
-      setEmail(user.email);
       setAvatarPreview(user.avatar);
     }
 
@@ -99,17 +95,6 @@ const UpdateProfile = ({ history }) => {
                     name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div className="updateProfileEmail">
-                  <MailOutlineIcon />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    required
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 

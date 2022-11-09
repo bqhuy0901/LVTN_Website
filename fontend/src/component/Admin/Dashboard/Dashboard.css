@@ -66,15 +66,15 @@
   color: rgb(255, 255, 255);
 }
 
-/* .lineChart {
-  width: 80%;
+.lineChart {
+  width: 75%;
   margin: auto;
 }
 
 .doughnutChart {
   width: 30vmax;
   margin: auto;
-} */
+}
 
 @media screen and (max-width: 600px) {
   .dashboard {

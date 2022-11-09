@@ -14,9 +14,9 @@ const ConfirmOrder = ({ history }) => {
     0
   );
 
-  const shippingCharges = subtotal > 5000000 ? 0 : 200;
+  const shippingCharges = subtotal > 2000000 ? 0 : 30000;
 
-  const tax = subtotal * 0.18;
+  const tax = subtotal * 0.01;
 
   const totalPrice = subtotal + tax + shippingCharges;
 
@@ -90,23 +90,23 @@ const ConfirmOrder = ({ history }) => {
             <div>
               <div>
                 <p>Tổng Phụ:</p>
-                <span>{subtotal} đ</span>
+                <span>{formatter.format(subtotal)} đ</span>
               </div>
               <div>
                 <p>Chi Phí Vận Chuyển:</p>
                 <span>{shippingCharges} đ</span>
               </div>
               <div>
-                <p>Tax:</p>
-                <span>{tax} đ</span>
+                <p>Thuế GTGT:</p>
+                <span>{formatter.format(tax)} đ</span>
               </div>
             </div>
 
             <div className="orderSummaryTotal">
               <p>
-                <b>Toàn Bộ:</b>
+                <b>Tổng Tiền:</b>
               </p>
-              <span>{totalPrice} đ</span>
+              <span>{formatter.format(totalPrice)}</span>
             </div>
 
             <button onClick={proceedToPayment}>Tiến Trình Thanh Toán</button>

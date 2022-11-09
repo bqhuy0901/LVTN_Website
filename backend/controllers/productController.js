@@ -207,7 +207,7 @@ exports.createProductReview = catchAsyncError(async (req, res, next) => {
 
 ///Get All Review of a Product
 exports.getAllReview = catchAsyncError(async (req, res, next) => {
-  const product = await Product.findById(req.query.productId);
+  const product = await Product.findById(req.query.id);
 
   if (!product) {
     return next(new errorHandler("Không có Sản phẩm này", 404));

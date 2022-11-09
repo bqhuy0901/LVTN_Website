@@ -3,16 +3,24 @@ import React, { useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import { Line, Doughnut } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../../actions/productAction";
+import { Line, Doughnut } from "react-chartjs-2";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
+  const { products } = useSelector((state) => state.products);
+  const { orders } = useSelector((state) => state.allOrders);
+  // const { users } = useSelector((state) => state.allUsers);
+
   let outOfStock = 0;
 
-  const { products } = useSelector((state) => state.products);
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
 
   products &&
     products.forEach((item) => {
@@ -26,19 +34,19 @@ const Dashboard = () => {
   }, [dispatch]);
 
   const lineState = {
-    labels: ["Initial Amount", "Amount Earned"],
+    labels: ["Số tiền ban đầu", "Số tiền kiếm được"],
     datasets: [
       {
-        label: "TOTAL AMOUNT",
+        label: "TỔNG CỘNG",
         backgroundColor: ["tomato"],
         hoverBackgroundColor: ["rgb(197, 72, 49)"],
-        data: [0, 4000],
+        data: [0, totalAmount],
       },
     ],
   };
 
   const doughnutState = {
-    labels: ["Out of Stock", "InStock"],
+    labels: ["Hết hàng", "Trong Kho"],
     datasets: [
       {
         backgroundColor: ["#00A6B4", "#6800B4"],
@@ -47,6 +55,12 @@ const Dashboard = () => {
       },
     ],
   };
+
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 9,
+  });
 
   return (
     <div className="dashboard">
@@ -58,16 +72,17 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> 200000
+              Tổng cộng <br /> {formatter.format(totalAmount)}
             </p>
           </div>
           <div className="dashboardSummaryBox2">
             <Link to="/admin/products">
+              <p>Products</p>
               <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">
               <p>Order</p>
-              <p>4</p>
+              <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
@@ -76,13 +91,13 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* <div className="lineChart">
+        <div className="lineChart">
           <Line data={lineState} />
         </div>
 
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -33,8 +33,9 @@
 }
 .orderDetailsContainerBox > div > span {
   margin: 0 1vmax;
-  font: 100 1vmax "Roboto";
+  font: 400 1vmax "Roboto";
   color: #575757;
+  text-transform: capitalize;
 }
 
 .orderDetailsCartItems > p {

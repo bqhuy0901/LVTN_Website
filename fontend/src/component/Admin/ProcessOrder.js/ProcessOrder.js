@@ -91,7 +91,7 @@ const ProcessOrder = ({ history, match }) => {
                       <p>Địa Chỉ:</p>
                       <span>
                         {order.shippingInfo &&
-                          `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
+                          `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.ward}, ${order.shippingInfo.district}`}
                       </span>
                     </div>
                   </div>
@@ -116,7 +116,9 @@ const ProcessOrder = ({ history, match }) => {
 
                     <div>
                       <p>Tổng giá:</p>
-                      <span>{order.totalPrice && order.totalPrice}</span>
+                      <span>
+                        {formatter.format(order.totalPrice && order.totalPrice)}
+                      </span>
                     </div>
                   </div>
 
@@ -171,13 +173,13 @@ const ProcessOrder = ({ history, match }) => {
                   <div>
                     <AccountTreeIcon />
                     <select onChange={(e) => setStatus(e.target.value)}>
-                      <option value="">Choose Category</option>
+                      <option value="">Chọn Xử Lý</option>
                       {order.orderStatus === "Processing" && (
-                        <option value="Shipped">Đã vận chuyển</option>
+                        <option value="Shipped">Vận Chuyển</option>
                       )}
 
                       {order.orderStatus === "Shipped" && (
-                        <option value="Delivered">Đã giao hàng</option>
+                        <option value="Delivered">Đã Giao Hàng</option>
                       )}
                     </select>
                   </div>

@@ -189,6 +189,7 @@ const ProductDetails = ({ match }) => {
                 cols="30"
                 rows="5"
                 onChange={(e) => setComment(e.target.value)}
+                value={comment}
               ></textarea>
             </DialogContent>
             <DialogActions>

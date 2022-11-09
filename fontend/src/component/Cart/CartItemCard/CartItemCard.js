@@ -12,7 +12,7 @@ const formatter = new Intl.NumberFormat("vi-VN", {
 const CartItemCard = ({ item, deleteCartItems }) => {
   return (
     <div className="CartItemCard">
-      <img src={item.image} alt="ssa" />
+      <img src={item.image} alt="Cart Images" />
       <div>
         <Link to={`/product/${item.product}`}>{item.name}</Link>
         <span>{`${formatter.format(item.price)}`}</span>
