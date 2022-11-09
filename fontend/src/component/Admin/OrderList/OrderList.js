@@ -28,11 +28,17 @@ const OrderList = ({ history }) => {
     dispatch(deleteOrder(id));
   };
 
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 9,
+  });
+
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "ID Đơn Hàng", minWidth: 300, flex: 1 },
     {
       field: "status",
-      headerName: "Status",
+      headerName: "Trạng Thái",
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
@@ -43,14 +49,14 @@ const OrderList = ({ history }) => {
     },
     {
       field: "itemsQty",
-      headerName: "Items Qty",
+      headerName: "SL Sản Phẩm",
       type: Number,
       minWidth: 150,
       flex: 0.3,
     },
     {
       field: "amount",
-      headerName: "Amount",
+      headerName: "Tổng Tiền",
       type: Number,
       minWidth: 270,
       flex: 0.5,
@@ -59,7 +65,7 @@ const OrderList = ({ history }) => {
     {
       field: "actions",
       flex: 0.3,
-      headerName: "Actions",
+      headerName: "",
       minWidth: 150,
       type: "number",
       sortable: false,
@@ -91,7 +97,7 @@ const OrderList = ({ history }) => {
         itemsQty: item.orderItems.length,
         id: item._id,
         status: item.orderStatus,
-        amount: item.totalPrice,
+        amount: formatter.format(item.totalPrice),
       });
     });
 

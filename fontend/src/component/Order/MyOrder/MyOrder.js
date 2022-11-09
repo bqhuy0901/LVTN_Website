@@ -16,6 +16,12 @@ const MyOrder = () => {
   const { loading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
 
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 9,
+  });
+
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
     {
@@ -66,7 +72,7 @@ const MyOrder = () => {
         itemsQty: item.orderItems.length,
         id: item._id,
         status: item.orderStatus,
-        amount: item.totalPrice,
+        amount: formatter.format(item.totalPrice),
       });
     });
 
