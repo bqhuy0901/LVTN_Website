@@ -48,7 +48,7 @@ const UserOptions = ({ user }) => {
   }
 
   function order() {
-    history.push("/order");
+    history.push("/orders");
   }
 
   function account() {

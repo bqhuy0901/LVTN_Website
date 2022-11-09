@@ -22,7 +22,7 @@ const ConfirmOrder = ({ history }) => {
 
   const address = `${shippingInfo.address}, ${shippingInfo.ward}, ${shippingInfo.district}, ${shippingInfo.city}`;
 
-  const proceedToPayment = ({}) => {
+  const proceedToPayment = () => {
     const data = {
       subtotal,
       shippingCharges,
@@ -34,6 +34,12 @@ const ConfirmOrder = ({ history }) => {
 
     history.push("/process/payment");
   };
+
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 9,
+  });
 
   return (
     <Fragment>
@@ -69,8 +75,8 @@ const ConfirmOrder = ({ history }) => {
                       {item.name}
                     </Link>{" "}
                     <span>
-                      {item.quantity} X {item.price} đ ={" "}
-                      <b>{item.price * item.quantity} đ</b>
+                      {item.quantity} X {formatter.format(item.price)} ={" "}
+                      <b>{formatter.format(item.price * item.quantity)}</b>
                     </span>
                   </div>
                 ))}

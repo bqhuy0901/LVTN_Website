@@ -19,10 +19,10 @@ const productSchema = mongoose.Schema(
       required: [true, "Plase Enter Product Price"],
       maxLength: [8, "Price cannot exceed 8 characters"],
     },
-    brand: {
-      type: String,
-      required: [true, "Plase Enter Product brand"],
-    },
+    // brand: {
+    //   type: String,
+    //   required: [true, "Plase Enter Product brand"],
+    // },
     ratings: {
       type: Number,
       default: 0,
@@ -43,18 +43,18 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Plase Enter Product Category"],
     },
-    sizes: [
-      {
-        type: String,
-        required: [true, "Plase Enter Product Size"],
-      },
-    ],
-    colors: [
-      {
-        type: String,
-        required: [true, "Plase Enter Product Color"],
-      },
-    ],
+    // sizes: [
+    //   {
+    //     type: String,
+    //     required: [true, "Plase Enter Product Size"],
+    //   },
+    // ],
+    // colors: [
+    //   {
+    //     type: String,
+    //     required: [true, "Plase Enter Product Color"],
+    //   },
+    // ],
     // weight: {
     //   type: Number,
     //   required: [true, "Plase Enter Product Weight"],

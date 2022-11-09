@@ -35,21 +35,20 @@ exports.loginUser = catchAsynsError(async (req, res, next) => {
   const { email, password } = req.body;
 
   //Kiem tram user co dung Email hoac Password ???
-
   if (!email || !password) {
-    return next(new errorHandler("Hay Email hoac Password"), 400);
+    return next(new errorHandler("Đã có Email hoặc Password"), 400);
   }
 
   const user = await User.findOne({ email }).select("+password");
 
   if (!user) {
-    return next(new errorHandler("Email hoac Password khong hop le"), 401);
+    return next(new errorHandler("Email hoặc Password Không hợp lệ"), 401);
   }
 
   const isPasswordMatched = await user.comparePassword(password);
 
   if (!isPasswordMatched) {
-    return next(new errorHandler("Email hoac Password khong hop le"), 401);
+    return next(new errorHandler("Email hoặc Password Không hợp lệ"), 401);
   }
 
   sendToken(user, 200, res);
@@ -65,7 +64,7 @@ exports.logout = catchAsynsError(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    message: "Logged Out",
+    message: "Đăng xuất",
   });
 });
 
@@ -74,7 +73,7 @@ exports.forgotPassword = catchAsynsError(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
-    return next(new errorHandler(("User not found", 404)));
+    return next(new errorHandler(("Người dùng không được tìm thấy", 404)));
   }
 
   //Get ResetPassword
@@ -84,7 +83,7 @@ exports.forgotPassword = catchAsynsError(async (req, res, next) => {
 
   const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
-  const message = `Your password rest token is :- \n\n ${resetPasswordUrl} \n\n If you have not requestd this email then, please ignore it `;
+  const message = ` Thông báo Token đặt lại Password của bạn là :- \n\n ${resetPasswordUrl} \n\n Nếu bạn không yêu cầu email này sau đó, xin vui lòng bỏ qua nó `;
 
   try {
     await sendEmail({
@@ -123,12 +122,15 @@ exports.resetPassword = catchAsynsError(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new errorHandler("Reset Password Token invalid or has been expired", 400)
+      new errorHandler(
+        "Đặt lại Token thông báo Password không hợp lệ hoặc đã hết hạn",
+        400
+      )
     );
   }
 
   if (req.body.password !== req.body.confirmPassword) {
-    return next(new errorHandler(" Password does not password", 400));
+    return next(new errorHandler("xác nhận Mật khẩu không chính xác", 400));
   }
 
   user.password = req.body.password;
@@ -222,7 +224,7 @@ exports.getSinglelUsers = catchAsynsError(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
   if (!user) {
-    return next(errorHandler(`Khong ton tai User co :Id ${req.params.id} `));
+    return next(errorHandler(`Không tồn tại User có :Id ${req.params.id} `));
   }
 
   res.status(200).json({
@@ -256,7 +258,7 @@ exports.deleteUser = catchAsynsError(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new errorHandler(`User does not exist with Id: ${req.params.id}`, 400)
+      new errorHandler(`Người dùng không tồn tại với Id: ${req.params.id}`, 400)
     );
   }
 
@@ -266,6 +268,6 @@ exports.deleteUser = catchAsynsError(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    message: "Da xoa User thanh cong!",
+    message: "Đã xóa User thành công!",
   });
 });

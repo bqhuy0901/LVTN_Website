@@ -36,7 +36,7 @@ export const getProduct =
   (
     keyword = "",
     currentPage = 1,
-    price = [0, 10000000],
+    price = [0, 4000000],
     category,
     brand,
     ratings = 0
