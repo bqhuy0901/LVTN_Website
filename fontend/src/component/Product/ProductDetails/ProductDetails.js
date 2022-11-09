@@ -3,13 +3,12 @@ import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { Rating } from "@material-ui/lab";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getProductDetails } from "../../../actions/productAction";
+import { clearErrors, getProductDetails, } from "../../../actions/productAction";
 import Loader from "../../layout/Loader/Loader";
-import ReviewCard from "../../Product/ReviewCard/ReviewCard";
+import ReviewCard from "../ReviewCard/ReviewCard";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
 import { addItemsToCart } from "../../../actions/cartAction";
-
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -25,6 +24,7 @@ const ProductDetails = ({ match }) => {
     }
     dispatch(getProductDetails(match.params.id));
   }, [dispatch, match.params.id, error, alert]);
+
 
   const options = {
     size: product.size,
@@ -119,11 +119,16 @@ const ProductDetails = ({ match }) => {
           {product.reviews && product.reviews[0] ? (
             <div className="reviews">
               {product.reviews &&
-                product.reviews.map((reivew) => <ReviewCard reivew={reivew} />)}
+                product.reviews.map((review) => <ReviewCard reivew={review} />)}
             </div>
           ) : (
             <p className="noReviews">Không có đánh giá</p>
           )}
+          
+          <h2 className="homeHeading">sản phẩm nổi bật</h2>
+          <div className="container" id="container">
+         
+          </div>
         </Fragment>
       )}
     </Fragment>
