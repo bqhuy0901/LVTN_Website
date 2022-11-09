@@ -9,7 +9,7 @@ import {
   newReview,
 } from "../../../actions/productAction";
 import Loader from "../../layout/Loader/Loader";
-import ReviewCard from "../../Product/ReviewCard/ReviewCard";
+import ReviewCard from "../ReviewCard/ReviewCard";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
 import { addItemsToCart } from "../../../actions/cartAction";
@@ -22,6 +22,7 @@ import {
 } from "@material-ui/core";
 import { NEW_REVIEW_RESET } from "../../../constans/productConstans";
 
+
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -33,6 +34,7 @@ const ProductDetails = ({ match }) => {
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
+
 
   const options = {
     size: "large",
@@ -212,6 +214,11 @@ const ProductDetails = ({ match }) => {
           ) : (
             <p className="noReviews">No Reviews Yet</p>
           )}
+          
+          <h2 className="homeHeading">sản phẩm nổi bật</h2>
+          <div className="container" id="container">
+         
+          </div>
         </Fragment>
       )}
     </Fragment>

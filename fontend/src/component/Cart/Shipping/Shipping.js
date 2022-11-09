@@ -129,8 +129,7 @@ const Shipping = ({ history }) => {
     }
     dispatch(saveShippingInfo({ address, city, ward, district, phoneNo }));
     history.push("/order/confirm");
-  };
-
+  }
   return (
     <Fragment>
       <MetaData title="Shipping Details" />
