@@ -10,6 +10,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CategoryIcon from "@mui/icons-material/Category";
 import Sidebar from "../Sidebar/Sidebar";
 import { NEW_PRODUCT_RESET } from "../../../constans/productConstans";
 
@@ -23,6 +24,7 @@ const NewProduct = ({ history }) => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -32,6 +34,16 @@ const NewProduct = ({ history }) => {
     "Giay Bóng rổ",
     "Giày Fusal",
     "Giày Chạy bộ",
+  ];
+
+  const brands = [
+    "Nike",
+    "Adidas",
+    "Puma",
+    "Mizuno",
+    "Jordan",
+    "Kamito",
+    ".....",
   ];
 
   useEffect(() => {
@@ -56,6 +68,7 @@ const NewProduct = ({ history }) => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
+    myForm.set("brand", brand);
     myForm.set("Stock", Stock);
 
     images.forEach((image) => {
@@ -95,13 +108,13 @@ const NewProduct = ({ history }) => {
             encType="multipart/form-data"
             onSubmit={createProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Thêm Sản Phẩm Mới</h1>
 
             <div>
               <SpellcheckIcon />
               <input
                 type="text"
-                placeholder="Product name"
+                placeholder="Tên Sản Phẩm"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -112,7 +125,7 @@ const NewProduct = ({ history }) => {
               <AttachMoneyIcon />
               <input
                 type="number"
-                placeholder="Price"
+                placeholder="Giá"
                 required
                 onChange={(e) => setPrice(e.target.value)}
               />
@@ -121,7 +134,7 @@ const NewProduct = ({ history }) => {
             <div>
               <DescriptionIcon />
               <textarea
-                placeholder="Product name"
+                placeholder="Mô tả"
                 required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -131,9 +144,9 @@ const NewProduct = ({ history }) => {
             </div>
 
             <div>
-              <AccountTreeIcon />
+              <CategoryIcon />
               <select onChange={(e) => setCategory(e.target.value)}>
-                <option value="">Choose Category</option>
+                <option value="">Thể Loại</option>
                 {categories.map((cate) => (
                   <option key={cate} value={cate}>
                     {cate}
@@ -143,10 +156,22 @@ const NewProduct = ({ history }) => {
             </div>
 
             <div>
+              <AccountTreeIcon />
+              <select onChange={(e) => setBrand(e.target.value)}>
+                <option value="">Thương Hiệu</option>
+                {brands.map((bra) => (
+                  <option key={bra} value={bra}>
+                    {bra}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
               <StorageIcon />
               <input
                 type="number"
-                placeholder="Stock"
+                placeholder="Số Lượng"
                 required
                 onChange={(e) => setStock(e.target.value)}
               />

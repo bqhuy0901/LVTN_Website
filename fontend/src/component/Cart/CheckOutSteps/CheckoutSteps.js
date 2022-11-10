@@ -8,7 +8,7 @@ import "../CheckOutSteps/CheckoutSteps.css";
 const CheckoutSteps = ({ activeStep }) => {
   const steps = [
     {
-      label: <Typography>Chi Tiết Vận Chuyển</Typography>,
+      label: <Typography>Thông tin giao hàng</Typography>,
       icon: <LocalShippingIcon />,
     },
     {
@@ -36,7 +36,10 @@ const CheckoutSteps = ({ activeStep }) => {
           >
             <StepLabel
               style={{
-                color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)",
+                color:
+                  activeStep >= index
+                    ? "rgba(123, 237, 159,1.0)"
+                    : "rgba(0, 0, 0, 0.649)",
               }}
               icon={item.icon}
             >

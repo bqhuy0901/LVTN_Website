@@ -7,10 +7,12 @@ import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -27,11 +29,9 @@ const Cart = ({ history }) => {
     dispatch(addItemsToCart(id, newQty));
   };
 
-
   const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
   };
-
 
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
@@ -42,7 +42,6 @@ const Cart = ({ history }) => {
     currency: "VND",
     maximumFractionDigits: 9,
   });
-
 
   return (
     <Fragment>
@@ -71,7 +70,7 @@ const Cart = ({ history }) => {
                         decreaseQuantity(item.product, item.quantity)
                       }
                     >
-                      -
+                      <RemoveIcon />
                     </button>
                     <input type="number" value={item.quantity} readOnly />
                     <button
@@ -83,7 +82,7 @@ const Cart = ({ history }) => {
                         )
                       }
                     >
-                      +
+                      <AddIcon />
                     </button>
                   </div>
                   <p className="cartSubtotal">{`${formatter.format(
@@ -94,7 +93,7 @@ const Cart = ({ history }) => {
             <div className="cartGrossProfit">
               <div></div>
               <div className="cartGrossProfitBox">
-                <p>Tổng Tiền</p>
+                <p>Thành tiền</p>
                 <p style={{ color: "red" }}>{`${formatter.format(
                   cartItems.reduce(
                     (acc, item) => acc + item.price * item.quantity,
@@ -104,7 +103,7 @@ const Cart = ({ history }) => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button onClick={checkoutHandler}>Thanh Toán</button>
+                <button onClick={checkoutHandler}>Thanh toán</button>
               </div>
             </div>
           </div>

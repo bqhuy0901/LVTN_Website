@@ -59,7 +59,7 @@
 }
 
 .pageItemActive {
-  background-color: tomato;
+  background-color: #a4b0be;
 }
 
 .pageLinkActive {
@@ -75,7 +75,7 @@
 
 .categoryBox {
   padding: 0%;
-  text-transform: uppercase !important;
+  text-transform: capitalize !important;
 }
 
 .category-link {
@@ -85,6 +85,7 @@
   margin: 0.4vmax;
   cursor: pointer;
   transition: all 0.5s;
+  text-transform: capitalize;
 }
 .category-link:hover {
   color: tomato;

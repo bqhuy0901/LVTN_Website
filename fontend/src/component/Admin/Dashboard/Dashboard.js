@@ -5,6 +5,7 @@ import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../../actions/productAction";
+import { getAllOrders } from "../../../actions/orderAction";
 import { Line, Doughnut } from "react-chartjs-2";
 
 const Dashboard = () => {
@@ -14,13 +15,13 @@ const Dashboard = () => {
   const { orders } = useSelector((state) => state.allOrders);
   // const { users } = useSelector((state) => state.allUsers);
 
-  let outOfStock = 0;
-
   let totalAmount = 0;
   orders &&
     orders.forEach((item) => {
       totalAmount += item.totalPrice;
     });
+
+  let outOfStock = 0;
 
   products &&
     products.forEach((item) => {
@@ -31,6 +32,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAdminProduct());
+    dispatch(getAllOrders());
   }, [dispatch]);
 
   const lineState = {
@@ -38,15 +40,15 @@ const Dashboard = () => {
     datasets: [
       {
         label: "TỔNG CỘNG",
-        backgroundColor: ["tomato"],
-        hoverBackgroundColor: ["rgb(197, 72, 49)"],
+        backgroundColor: ["rgba(255, 82, 82,1.0)"],
+        hoverBackgroundColor: ["rgba(255, 82, 82,1.0)"],
         data: [0, totalAmount],
       },
     ],
   };
 
   const doughnutState = {
-    labels: ["Hết hàng", "Trong Kho"],
+    labels: ["outOfStock", "InStock"],
     datasets: [
       {
         backgroundColor: ["#00A6B4", "#6800B4"],
@@ -72,20 +74,20 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Tổng cộng <br /> {formatter.format(totalAmount)}
+              Tổng cộng: <span>{formatter.format(totalAmount)}</span>{" "}
             </p>
           </div>
           <div className="dashboardSummaryBox2">
             <Link to="/admin/products">
-              <p>Products</p>
+              <p>Sản phẩm</p>
               <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">
-              <p>Order</p>
+              <p>Đơn hàng</p>
               <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
-              <p>Users</p>
+              <p>Tài khoản</p>
               <p>2</p>
             </Link>
           </div>

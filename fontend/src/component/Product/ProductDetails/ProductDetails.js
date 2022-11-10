@@ -21,7 +21,8 @@ import {
   Button,
 } from "@material-ui/core";
 import { NEW_REVIEW_RESET } from "../../../constans/productConstans";
-
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,6 @@ const ProductDetails = ({ match }) => {
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
-
 
   const options = {
     size: "large",
@@ -132,25 +132,42 @@ const ProductDetails = ({ match }) => {
             <div>
               <div className="detailsBlock-1">
                 <h2>{product.name}</h2>
-                <p>Product #{product._id}</p>
+                <p>Product # {product._id}</p>
               </div>
               <div className="detailsBlock-2">
                 <Rating {...options} />
-                <span>({product.numOfReviews} Reviews)</span>
+                <span>({product.numOfReviews} Đánh giá)</span>
               </div>
+
+              <div className="detailsBlock-2-2">
+                <ul className="detailsBlock-2-2-ul">
+                  <li className="detailsBlock-2-2-li">
+                    Loại : <span>{product.category}</span>
+                  </li>
+                  <li className="detailsBlock-2-2-li">
+                    Thương hiệu : <span>{product.brand}</span>
+                  </li>
+                </ul>
+              </div>
+
               <div className="detailsBlock-3">
                 <h1>{`${formatter.format(product.price)}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button onClick={decreaseQuantity}>-</button>
+                    <label>Số lượng</label>
+                    <button onClick={decreaseQuantity}>
+                      <RemoveIcon />
+                    </button>
                     <input type="number" value={quantity} readOnly />
-                    <button onClick={increaseQuantity}>+</button>
+                    <button onClick={increaseQuantity}>
+                      <AddIcon />
+                    </button>
                   </div>
                   <button
                     disabled={product.Stock < 1 ? true : false}
                     onClick={addToCartHandler}
                   >
-                    Thêm Vào Giỏ Hàng
+                    Thêm vào giỏ
                   </button>
                 </div>
                 <p>
@@ -166,7 +183,7 @@ const ProductDetails = ({ match }) => {
               </div>
 
               <button onClick={submitReviewToggle} className="submitReview">
-                Nhập Đánh Giá
+                Nhập đánh giá
               </button>
             </div>
           </div>
@@ -214,11 +231,9 @@ const ProductDetails = ({ match }) => {
           ) : (
             <p className="noReviews">No Reviews Yet</p>
           )}
-          
+
           <h2 className="homeHeading">sản phẩm nổi bật</h2>
-          <div className="container" id="container">
-         
-          </div>
+          <div className="container" id="container"></div>
         </Fragment>
       )}
     </Fragment>

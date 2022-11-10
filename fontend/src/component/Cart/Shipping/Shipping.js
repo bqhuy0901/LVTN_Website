@@ -25,6 +25,7 @@ const Shipping = ({ history }) => {
   const [listWard, setListWard] = useState();
   const [code, setCode] = useState({});
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const getCity = async () => {
       setLoading(true);
@@ -118,7 +119,9 @@ const Shipping = ({ history }) => {
     }
     setWard(strWardName);
   };
+  
   const regex = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/;
+
   const shippingSubmit = (e) => {
     e.preventDefault();
     if (!regex.test(phoneNo)) {
@@ -129,14 +132,14 @@ const Shipping = ({ history }) => {
     }
     dispatch(saveShippingInfo({ address, city, ward, district, phoneNo }));
     history.push("/order/confirm");
-  }
+  };
   return (
     <Fragment>
       <MetaData title="Shipping Details" />
       <CheckoutSteps activeStep={0} />
       <div className="shippingContainer">
         <div className="shippingBox">
-          <h2 className="shippingHeading">Chi Tiết Vận Chuyển</h2>
+          <h2 className="shippingHeading">Thông tin giao hàng</h2>
 
           <form
             className="shippingForm"
@@ -147,7 +150,7 @@ const Shipping = ({ history }) => {
               <HomeIcon />
               <input
                 type="text"
-                placeholder="Address"
+                placeholder="Địa chỉ"
                 required
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -229,14 +232,18 @@ const Shipping = ({ history }) => {
               <PhoneIcon />
               <input
                 type="number"
-                placeholder="Phone Number"
+                placeholder="SĐT"
                 required
                 value={phoneNo}
                 onChange={(e) => setPhoneNo(e.target.value)}
                 size="10"
               />
             </div>
-            <input type="submit" value="Continue" className="shippingBtn" />
+            <input
+              type="submit"
+              value="Tiếp tục đến phương thức thanh toán"
+              className="shippingBtn"
+            />
           </form>
         </div>
       </div>

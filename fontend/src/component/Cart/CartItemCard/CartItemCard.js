@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../CartItemCard/CartItemCard.css";
-import { AiFillDelete } from "react-icons/ai";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const formatter = new Intl.NumberFormat("vi-VN", {
   style: "currency",
@@ -17,7 +17,7 @@ const CartItemCard = ({ item, deleteCartItems }) => {
         <Link to={`/product/${item.product}`}>{item.name}</Link>
         <span>{`${formatter.format(item.price)}`}</span>
         <p onClick={() => deleteCartItems(item.product)}>
-          <AiFillDelete />
+          <ClearIcon fontSize="large" />
         </p>
       </div>
     </div>

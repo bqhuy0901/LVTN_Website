@@ -16,7 +16,7 @@ const ConfirmOrder = ({ history }) => {
 
   const shippingCharges = subtotal > 2000000 ? 0 : 30000;
 
-  const tax = subtotal * 0.01;
+  const tax = subtotal * 0.1;
 
   const totalPrice = subtotal + tax + shippingCharges;
 
@@ -104,7 +104,7 @@ const ConfirmOrder = ({ history }) => {
 
             <div className="orderSummaryTotal">
               <p>
-                <b>Tổng Tiền:</b>
+                <b>Thành tiền:</b>
               </p>
               <span>{formatter.format(totalPrice)}</span>
             </div>

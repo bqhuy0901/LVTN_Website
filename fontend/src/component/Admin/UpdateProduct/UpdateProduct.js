@@ -14,6 +14,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CategoryIcon from "@mui/icons-material/Category";
 import Sidebar from "../Sidebar/Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../../constans/productConstans";
 
@@ -33,6 +34,7 @@ const UpdateProduct = ({ history, match }) => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
@@ -43,6 +45,16 @@ const UpdateProduct = ({ history, match }) => {
     "Giay Bóng rổ",
     "Giày Fusal",
     "Giày Chạy bộ",
+  ];
+
+  const brands = [
+    "Nike",
+    "Adidas",
+    "Puma",
+    "Mizuno",
+    "Jordan",
+    "Kamito",
+    ".....",
   ];
 
   const productId = match.params.id;
@@ -94,6 +106,7 @@ const UpdateProduct = ({ history, match }) => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
+    myForm.set("brand", brand);
     myForm.set("Stock", Stock);
 
     images.forEach((image) => {
@@ -171,15 +184,24 @@ const UpdateProduct = ({ history, match }) => {
             </div>
 
             <div>
-              <AccountTreeIcon />
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option value="">Choose Category</option>
+              <CategoryIcon />
+              <select onChange={(e) => setCategory(e.target.value)}>
+                <option value="">Thể Loại</option>
                 {categories.map((cate) => (
                   <option key={cate} value={cate}>
                     {cate}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <AccountTreeIcon />
+              <select onChange={(e) => setBrand(e.target.value)}>
+                <option value="">Thương Hiệu</option>
+                {brands.map((bra) => (
+                  <option key={bra} value={bra}>
+                    {bra}
                   </option>
                 ))}
               </select>

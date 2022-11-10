@@ -9,15 +9,27 @@ import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import FirstPageIcon from "@mui/icons-material/FirstPage";
+import LastPageIcon from "@mui/icons-material/LastPage";
 
 const categories = [
-  "giay bong da",
-  "giay bong ro",
-  "giay chay bo",
-  "giay the thao",
+  "Giày Bóng đá",
+  "Giay Bóng rổ",
+  "Giày Fusal",
+  "Giày Chạy bộ",
 ];
 
-const brands = ["Nike", "Adidas", "Mizuno", "Puma"];
+const brands = [
+  "Nike",
+  "Adidas",
+  "Puma",
+  "Mizuno",
+  "Jordan",
+  "Kamito",
+  ".....",
+];
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
@@ -85,7 +97,7 @@ const Products = ({ match }) => {
           </div>
 
           <div className="filterBox">
-            <Typography>MỨC GIÁ</Typography>
+            <Typography>Mức giá</Typography>
             <Slider
               size="large"
               value={price}
@@ -96,7 +108,7 @@ const Products = ({ match }) => {
               max={4000000}
             />
 
-            <Typography>LOẠI GIÀY</Typography>
+            <Typography>Loại Giày</Typography>
             <ul className="categoryBox">
               {categories.map((category) => (
                 <li
@@ -144,10 +156,10 @@ const Products = ({ match }) => {
                 itemsCountPerPage={resultPerPage}
                 totalItemsCount={productsCount}
                 onChange={setCurrentPageNo}
-                nextPageText="Next"
-                prevPageText="Prev"
-                firstPageText="First"
-                lastPageText="Last"
+                nextPageText=<ArrowForwardIosIcon />
+                prevPageText=<ArrowBackIosNewIcon />
+                firstPageText=<FirstPageIcon />
+                lastPageText=<LastPageIcon />
                 itemClass="page-item"
                 linkClass="page-link"
                 activeClass="pageItemActive"
