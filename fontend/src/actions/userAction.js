@@ -35,7 +35,7 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
   CLEAR_ERRORS,
-} from "../constans/userConstans";
+} from "../constans/userConstans.js";
 import axios from "axios";
 
 // Login

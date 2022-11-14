@@ -116,19 +116,17 @@ const ProductDetails = ({ match }) => {
         <Fragment>
           <MetaData title={`${product.name} -- SHOPSHOE`} />
           <div className="ProductDetails">
-            <div>
-              <Carousel>
-                {product.images &&
-                  product.images.map((item, i) => (
-                    <img
-                      className="CarouselImage"
-                      key={item.url}
-                      src={item.url}
-                      alt={`${i} Slide`}
-                    />
-                  ))}
-              </Carousel>
-            </div>
+            <Carousel>
+              {product.images &&
+                product.images.map((item, i) => (
+                  <img
+                    className="CarouselImage"
+                    key={item.url}
+                    src={item.url}
+                    alt={`${i} Slide`}
+                  />
+                ))}
+            </Carousel>
             <div>
               <div className="detailsBlock-1">
                 <h2>{product.name}</h2>

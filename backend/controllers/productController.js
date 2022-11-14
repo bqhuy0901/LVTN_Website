@@ -90,7 +90,6 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
 });
 
 //Update product -- Admin
-
 exports.updateProduct = catchAsyncError(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
 
@@ -142,7 +141,6 @@ exports.updateProduct = catchAsyncError(async (req, res, next) => {
 });
 
 //Delete Product
-
 exports.deleteProduct = catchAsyncError(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
@@ -237,7 +235,13 @@ exports.deleteReview = catchAsyncError(async (req, res, next) => {
     avg += rev.rating;
   });
 
-  const ratings = avg / product.reviews.length;
+  let ratings = 0;
+
+  if (reviews.length === 0) {
+    ratings = 0;
+  } else {
+    ratings = avg / reviews.length;
+  }
 
   const numOfReviews = reviews.length;
 

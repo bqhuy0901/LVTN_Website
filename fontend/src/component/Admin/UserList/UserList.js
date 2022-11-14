@@ -9,30 +9,28 @@ import MetaData from "../../layout/MetaData";
 import Sidebar from "../Sidebar/Sidebar";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { DELETE_ORDER_RESET } from "../../../constans/orderConstain";
 import {
-  deleteOrder,
-  getAllOrders,
+  getAllUsers,
   clearErrors,
-} from "../../../actions/orderAction";
+  deleteUser,
+} from "../../../actions/userAction";
+import { DELETE_USER_RESET } from "../../../constans/userConstans";
 
-const OrderList = ({ history }) => {
+const UsersList = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const { error, orders } = useSelector((state) => state.allOrders);
+  const { error, users } = useSelector((state) => state.allUsers);
 
-  const { error: deleteError, isDeleted } = useSelector((state) => state.order);
+  const {
+    error: deleteError,
+    isDeleted,
+    message,
+  } = useSelector((state) => state.profile);
 
-  const deleteOrderHandler = (id) => {
-    dispatch(deleteOrder(id));
+  const deleteUserHandler = (id) => {
+    dispatch(deleteUser(id));
   };
-
-  const formatter = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    maximumFractionDigits: 9,
-  });
 
   var options = {
     weekday: "long",
@@ -42,56 +40,59 @@ const OrderList = ({ history }) => {
   };
 
   const columns = [
-    { field: "id", headerName: "ID Đơn Hàng", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Users ID", minWidth: 200, flex: 0.8 },
+
     {
-      field: "status",
-      headerName: "Trạng Thái",
+      field: "email",
+      headerName: "Email",
+      minWidth: 200,
+      flex: 1,
+    },
+    {
+      field: "name",
+      headerName: "Name",
+      type: "number",
+      minWidth: 150,
+      flex: 0.3,
+    },
+
+    {
+      field: "role",
+      headerName: "Role",
+      type: "number",
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
+        return params.getValue(params.id, "role") === "admin"
           ? "greenColor"
           : "redColor";
       },
     },
     {
-      field: "itemsQty",
-      headerName: "Qty",
-      type: Number,
-      minWidth: 150,
-      flex: 0.3,
-    },
-    {
-      field: "amount",
-      headerName: "Total Price",
-      type: Number,
-      minWidth: 270,
-      flex: 0.5,
-    },
-    {
       field: "date",
       headerName: "Date",
-      type: Date,
+      type: "date",
       minWidth: 270,
       flex: 0.5,
     },
+
     {
       field: "actions",
       flex: 0.3,
-      headerName: "",
+      headerName: "Actions",
       minWidth: 150,
       type: "number",
       sortable: false,
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
+            <Link to={`/admin/user/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
 
             <Button
               onClick={() =>
-                deleteOrderHandler(params.getValue(params.id, "id"))
+                deleteUserHandler(params.getValue(params.id, "id"))
               }
             >
               <DeleteIcon />
@@ -104,14 +105,14 @@ const OrderList = ({ history }) => {
 
   const rows = [];
 
-  orders &&
-    orders.forEach((item) => {
-      let today = new Date(item.createdAt);
+  users &&
+    users.forEach((item) => {
+      let today = new Date(item.createAt);
       rows.push({
-        itemsQty: item.orderItems.length,
         id: item._id,
-        status: item.orderStatus,
-        amount: formatter.format(item.totalPrice),
+        email: item.email,
+        role: item.role,
+        name: item.name,
         date: today.toLocaleDateString("vi-VN", options),
       });
     });
@@ -128,22 +129,22 @@ const OrderList = ({ history }) => {
     }
 
     if (isDeleted) {
-      alert.success("Đơn Hàng đã được xóa thành công !!!");
-      history.push("/admin/orders");
-      dispatch({ type: DELETE_ORDER_RESET });
+      alert.success(message);
+      history.push("/admin/dashboard");
+      dispatch({ type: DELETE_USER_RESET });
     }
 
-    dispatch(getAllOrders());
-  }, [dispatch, alert, error, history, deleteError, isDeleted]);
+    dispatch(getAllUsers());
+  }, [dispatch, alert, error, deleteError, isDeleted, history, message]);
 
   return (
     <Fragment>
-      <MetaData title={`TẤT CẢ CÁC ĐƠN HÀNG - Admin`} />
+      <MetaData title={`TẤT CẢ CÁC USERS - Admin`} />
 
       <div className="dashboard">
         <Sidebar />
         <div className="productListContainer">
-          <h1 id="productListHeading">TẤT CẢ CÁC ĐƠN HÀNG</h1>
+          <h1 id="productListHeading">TẤT CẢ CÁC USERS</h1>
 
           <DataGrid
             rows={rows}
@@ -159,4 +160,4 @@ const OrderList = ({ history }) => {
   );
 };
 
-export default OrderList;
+export default UsersList;

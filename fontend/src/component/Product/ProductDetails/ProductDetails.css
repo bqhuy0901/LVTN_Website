@@ -1,4 +1,5 @@
 .ProductDetails {
+  background-color: rgb(255, 255, 255);
   width: 100vw;
   max-width: 100%;
   padding: 6vmax;
@@ -8,6 +9,7 @@
 
 .ProductDetails > div {
   width: 100%;
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -21,10 +23,8 @@
 }
 
 .CarouselImage {
-  width: 37vmax;
-  max-width: 100%;
-  vertical-align: middle;
-  height: initial !important;
+  width: 40vmax;
+  height: 35vmax;
 }
 
 .detailsBlock-1 > h2 {

@@ -22,6 +22,13 @@ const MyOrder = () => {
     maximumFractionDigits: 9,
   });
 
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
     {
@@ -50,6 +57,13 @@ const MyOrder = () => {
       flex: 0.5,
     },
     {
+      field: "date",
+      headerName: "Date",
+      type: Date,
+      minWidth: 270,
+      flex: 0.5,
+    },
+    {
       field: "actions",
       headerName: "Actions",
       minWidth: 150,
@@ -67,12 +81,14 @@ const MyOrder = () => {
   const rows = [];
 
   orders &&
-    orders.forEach((item, index) => {
+    orders.forEach((item) => {
+      let today = new Date(item.createdAt);
       rows.push({
         itemsQty: item.orderItems.length,
         id: item._id,
         status: item.orderStatus,
         amount: formatter.format(item.totalPrice),
+        date: today.toLocaleDateString("vi-VN", options),
       });
     });
 
