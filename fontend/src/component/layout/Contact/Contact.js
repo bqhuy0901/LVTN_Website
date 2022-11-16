@@ -14,13 +14,13 @@ const Contact = () => {
         <div>
           <div>
             <LocationOnIcon />
-            <p>ĐỊA CHỈ</p>
+            <p>LOCATION</p>
             <span>
               180 Cao Lỗ,
               Phường 4,Quận 8,Thành Phố Hồ Chí Minh.
             </span>
             <br></br>
-            <p>KẾT NỐI VỚI CHÚNG TÔI</p>
+            <p>CONNECT US</p>
             <span className="icons">
               <a href="#">
                 <FaFacebook />
