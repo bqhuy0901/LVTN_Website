@@ -1,29 +1,107 @@
-.contactContainer {
-    height: 100vh;
-    width: 100vw;
-    max-width: 100%;
-    display: grid;
-    place-items: center;
-    background-color: white;
-    position: fixed;
-  }
+.contactSection {
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 4fr 4fr;
+  position: fixed;
+}
+
+.contactSectionGradient {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(78, 81, 255),
+    rgb(208, 119, 56)
+  );
+}
+
+.contactSectionContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: rgb(255, 255, 255);
+  width: 80vw;
+  height: 80vh;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.192);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactSectionContainer > h1 {
+  font: 800 3vmax "Roboto";
+  color: tomato;
+  margin: 2vmax;
+}
+
+
+.contactSectionContainer > div {
+  display: flex;
+  width: 100%;
+}
+
+.contactSectionContainer > div > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vmax;
+  box-sizing: border-box;
+}
+
+.contactSectionContainer > div > div > h1 {
+  color: rgba(0, 0, 0, 0.623);
+  font: 800 1vmax "Roboto";
+  font-size: 50px;
+  align-items: left;
   
-  .mailBtn {
-    text-decoration: none;
-    transform: translateX(-100vw);
-    animation: mailBtnAnimation 2s forwards;
-  }
+}
+.contactSectionContainer > div > div > span {
+  color: rgba(0, 0, 0, 0.623);
+  font: 500 1vmax "Roboto";
+  font-size: 20px;
+  align-items: left;
   
-  .mailBtn > button {
-    text-decoration: none;
-    font: 200 2vmax "Roboto";
-    cursor: url("https://img.icons8.com/color/48/000000/edit--v2.png"), pointer;
-    padding: 2vmax;
+}
+.icons {
+  margin-top: 25px;
+}
+.icons > a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .contactSectionContainer > div {
+    display: block;
   }
-  
-  @keyframes mailBtnAnimation {
-    to {
-      transform: translateX(0);
-    }
+
+  .contactSectionContainer > h1 {
+    font: 400 5vmax "Roboto";
+    margin: 3vmax;
   }
-  
+
+  .contactSectionContainer > div > div > p {
+    font: 100 2vmax "Roboto";
+  }
+
+  .contactSectionContainer > div > div > span {
+    font: 100 1.4vmax "Roboto";
+    width: 70%;
+  }
+}
