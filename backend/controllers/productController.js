@@ -3,7 +3,6 @@ const errorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("../middlewares/catchAsynsError");
 const ApiFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
-const { urlencoded } = require("body-parser");
 
 //Create Product - Admin
 exports.createProduct = catchAsyncError(async (req, res, next) => {
@@ -29,7 +28,7 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
   }
 
   req.body.images = imagesLinks;
-  req.body.user = req.User.id;
+  req.body.sser = req.User.id;
 
   const product = await Product.create(req.body);
   res.status(201).json({

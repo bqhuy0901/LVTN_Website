@@ -248,6 +248,38 @@
   color: rgba(0, 0, 0, 0.548);
 }
 
+.TabContainer {
+  font-family: Roboto;
+  width: 80vmax;
+  padding: 1vmax;
+  margin: 3vmax auto;
+  color: inherit;
+}
+
+.product_seeMore {
+  text-align: center;
+  margin-top: 62px;
+  font-family: Roboto Condensed;
+}
+
+.product_seeMore a {
+  display: inline-block;
+  border: 1px solid #0e1c22;
+  color: #0e1c22;
+  padding: 8px 44px;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.product_seeMore a:hover {
+  color: white;
+  background-color: black;
+}
+
 @media screen and (max-width: 600px) {
   .ProductDetails {
     flex-direction: column;
