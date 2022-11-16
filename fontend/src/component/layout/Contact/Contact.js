@@ -20,7 +20,7 @@ const Contact = () => {
               Phường 4,Quận 8,Thành Phố Hồ Chí Minh.
             </span>
             <br></br>
-            <p>CONNECT US</p>
+            <p>KẾT NỐI VỚI CHÚNG TÔI</p>
             <span className="icons">
               <a href="#">
                 <FaFacebook />
