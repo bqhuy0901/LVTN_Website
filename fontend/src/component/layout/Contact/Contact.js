@@ -14,7 +14,7 @@ const Contact = () => {
         <div>
           <div>
             <LocationOnIcon />
-            <p>LOCATION</p>
+            <p>ĐỊA CHỈ</p>
             <span>
               180 Cao Lỗ,
               Phường 4,Quận 8,Thành Phố Hồ Chí Minh.
