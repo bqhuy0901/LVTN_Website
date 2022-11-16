@@ -7,13 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../../actions/productAction";
 import { getAllOrders } from "../../../actions/orderAction";
 import { Line, Doughnut } from "react-chartjs-2";
+import { getAllUsers } from "../../../actions/userAction";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
   const { products } = useSelector((state) => state.products);
   const { orders } = useSelector((state) => state.allOrders);
-  // const { users } = useSelector((state) => state.allUsers);
+  const { users } = useSelector((state) => state.allUsers);
 
   let totalAmount = 0;
   orders &&
@@ -33,6 +34,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   const lineState = {
@@ -88,7 +90,7 @@ const Dashboard = () => {
             </Link>
             <Link to="/admin/users">
               <p>Tài khoản</p>
-              <p>2</p>
+              <p>{users && users.length}</p>
             </Link>
           </div>
         </div>

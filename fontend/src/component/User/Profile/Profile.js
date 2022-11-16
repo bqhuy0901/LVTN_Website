@@ -14,6 +14,15 @@ const Profile = ({ history }) => {
     }
   }, [history, isAuthenticated]);
 
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
+  var today = new Date(user.createAt);
+
   return (
     <Fragment>
       {loading ? (
@@ -38,7 +47,7 @@ const Profile = ({ history }) => {
               </div>
               <div>
                 <h4>Đã tham gia</h4>
-                <p>{String(user.createAt).substring(0, 10)}</p>
+                <p>{today.toLocaleDateString("vi-VN", options)}</p>
               </div>
 
               <div>

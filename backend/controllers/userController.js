@@ -55,7 +55,6 @@ exports.loginUser = catchAsynsError(async (req, res, next) => {
 });
 
 //Logout
-
 exports.logout = catchAsynsError(async (req, res, next) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
@@ -81,7 +80,9 @@ exports.forgotPassword = catchAsynsError(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/password/reset/${resetToken}`;
 
   const message = ` Thông báo Token đặt lại Password của bạn là :- \n\n ${resetPasswordUrl} \n\n Nếu bạn không yêu cầu email này sau đó, xin vui lòng bỏ qua nó `;
 
@@ -176,7 +177,6 @@ exports.updatePassword = catchAsynsError(async (req, res, next) => {
 exports.updateProfile = catchAsynsError(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
-    email: req.body.email,
   };
 
   if (req.body.avatar !== "") {
@@ -210,12 +210,12 @@ exports.updateProfile = catchAsynsError(async (req, res, next) => {
 });
 
 //Get all User --Admin
-exports.getAllUsers = catchAsynsError(async (req, res, next) => {
-  const user = await User.find();
+exports.getAllUser = catchAsynsError(async (req, res, next) => {
+  const users = await User.find();
 
   res.status(200).json({
     success: true,
-    user,
+    users,
   });
 });
 
@@ -241,7 +241,7 @@ exports.updateUserRole = catchAsynsError(async (req, res, next) => {
     role: req.body.role,
   };
 
-  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+  await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
@@ -262,7 +262,9 @@ exports.deleteUser = catchAsynsError(async (req, res, next) => {
     );
   }
 
-  //We will delete cloudinary later
+  const imageId = user.avatar.public_id;
+
+  await cloudinary.v2.uploader.destroy(imageId);
 
   await user.remove();
 

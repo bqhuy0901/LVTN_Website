@@ -8,7 +8,6 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Plase Enter Product Name"],
       trim: true,
-      unique: true,
     },
     description: {
       type: String,
@@ -21,7 +20,7 @@ const productSchema = mongoose.Schema(
     },
     brand: {
       type: String,
-      // required: [true, "Plase Enter Product brand"],
+      required: [true, "Plase Enter Product brand"],
     },
     category: {
       type: String,

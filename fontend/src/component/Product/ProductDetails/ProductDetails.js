@@ -23,6 +23,8 @@ import {
 import { NEW_REVIEW_RESET } from "../../../constans/productConstans";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import LabTabs from "../LabTabs/LabTabs";
+import { Link } from "react-router-dom";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -116,19 +118,17 @@ const ProductDetails = ({ match }) => {
         <Fragment>
           <MetaData title={`${product.name} -- SHOPSHOE`} />
           <div className="ProductDetails">
-            <div>
-              <Carousel>
-                {product.images &&
-                  product.images.map((item, i) => (
-                    <img
-                      className="CarouselImage"
-                      key={item.url}
-                      src={item.url}
-                      alt={`${i} Slide`}
-                    />
-                  ))}
-              </Carousel>
-            </div>
+            <Carousel>
+              {product.images &&
+                product.images.map((item, i) => (
+                  <img
+                    className="CarouselImage"
+                    key={item.url}
+                    src={item.url}
+                    alt={`${i} Slide`}
+                  />
+                ))}
+            </Carousel>
             <div>
               <div className="detailsBlock-1">
                 <h2>{product.name}</h2>
@@ -232,8 +232,15 @@ const ProductDetails = ({ match }) => {
             <p className="noReviews">No Reviews Yet</p>
           )}
 
-          <h2 className="homeHeading">sản phẩm nổi bật</h2>
-          <div className="container" id="container"></div>
+          <div className="TabContainer">
+            <LabTabs />
+          </div>
+
+          <h2 className="homeHeading">sản phẩm liên quan</h2>
+
+          <div className="product_seeMore">
+            <Link to="/products">Xem Thêm</Link>
+          </div>
         </Fragment>
       )}
     </Fragment>

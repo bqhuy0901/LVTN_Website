@@ -9,6 +9,7 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.61",
+    "@mui/lab": "^5.0.0-alpha.108",
     "@mui/x-data-grid": "^5.17.8",
     "@stripe/react-stripe-js": "^1.14.2",
     "@stripe/stripe-js": "^1.42.1",
@@ -24,7 +25,6 @@
     "react-chartjs-2": "^3.0.3",
     "react-dev-utils": "^10.0.0",
     "react-dom": "^18.2.0",
-    "react-google-maps": "^9.4.5",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.11.0",
     "react-js-pagination": "^3.0.3",
@@ -35,7 +35,6 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "slick-carousel": "^1.8.1",
     "swiper": "^8.4.4",
     "web-vitals": "^2.1.4"
   },

@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from "../../../actions/userAction";
 import { useAlert } from "react-alert";
-import { UPDATE_PRODUCT_RESET } from "../../../constans/productConstans";
+import { UPDATE_USER_RESET } from "../../../constans/userConstans";
 import MetaData from "../../layout/MetaData";
 
 const UpdateProfile = ({ history }) => {
@@ -66,7 +66,7 @@ const UpdateProfile = ({ history }) => {
       history.push("/account");
 
       dispatch({
-        type: UPDATE_PRODUCT_RESET,
+        type: UPDATE_USER_RESET,
       });
     }
   }, [dispatch, error, alert, history, user, isUpdated]);

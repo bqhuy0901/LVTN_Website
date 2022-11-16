@@ -8,7 +8,7 @@ const {
   getUserDetails,
   updatePassword,
   updateProfile,
-  getAllUsers,
+  getAllUser,
   getSinglelUsers,
   updateUserRole,
   deleteUser,
@@ -33,11 +33,9 @@ router.route("/password/update").put(isAuthenticcatedUser, updatePassword);
 
 router.route("/me/update").put(isAuthenticcatedUser, updateProfile);
 
-router.route("/admin/users").get(isAuthenticcatedUser, getAllUsers);
-
 router
   .route("/admin/users")
-  .get(isAuthenticcatedUser, authorizeRoles("admin"), getAllUsers);
+  .get(isAuthenticcatedUser, authorizeRoles("admin"), getAllUser);
 
 router
   .route("/admin/user/:id")

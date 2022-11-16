@@ -30,6 +30,13 @@ const ProductList = ({ history }) => {
     dispatch(deleteProduct(id));
   };
 
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
 
@@ -50,6 +57,13 @@ const ProductList = ({ history }) => {
     {
       field: "price",
       headerName: "Price",
+      type: "number",
+      minWidth: 270,
+      flex: 0.5,
+    },
+    {
+      field: "date",
+      headerName: "Date",
       type: "number",
       minWidth: 270,
       flex: 0.5,
@@ -86,11 +100,13 @@ const ProductList = ({ history }) => {
 
   products &&
     products.forEach((item) => {
+      let today = new Date(item.createdAt);
       rows.push({
         id: item._id,
         stock: item.Stock,
         price: item.price,
         name: item.name,
+        date: today.toLocaleDateString("vi-VN", options),
       });
     });
 
