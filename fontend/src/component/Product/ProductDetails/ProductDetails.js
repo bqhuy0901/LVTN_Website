@@ -24,10 +24,10 @@ import { NEW_REVIEW_RESET } from "../../../constans/productConstans";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import LabTabs from "../LabTabs/LabTabs";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ProductCard from "../../Home/ProductCard";
 
 const ProductDetails = ({ match }) => {
-  const id = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -38,6 +38,8 @@ const ProductDetails = ({ match }) => {
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
+
+  const { products } = useSelector((state) => state.products);
 
   const options = {
     size: "large",
@@ -282,6 +284,13 @@ const ProductDetails = ({ match }) => {
               </div>
 
               <h2 className="homeHeading">sản phẩm liên quan</h2>
+
+              <div className="products">
+                {products &&
+                  products.map((product) => (
+                    <ProductCard key={product._id} product={product} />
+                  ))}
+              </div>
 
               <div className="product_seeMore">
                 <Link to="/products">Xem Thêm</Link>

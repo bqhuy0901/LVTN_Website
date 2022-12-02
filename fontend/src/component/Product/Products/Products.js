@@ -41,6 +41,7 @@ const Products = ({ match }) => {
     resultPerPage,
     filteredProductsCount,
   } = useSelector((state) => state.products);
+
   const [ratings, setRatings] = useState(0);
 
   const keyword = match.params.keyword;

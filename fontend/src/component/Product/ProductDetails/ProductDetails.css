@@ -364,6 +364,8 @@ product-deatails-container {
   background-color: black;
 }
 
+
+
 @media screen and (max-width: 600px) {
   .ProductDetails {
     flex-direction: column;

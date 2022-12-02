@@ -34,7 +34,7 @@ function Slider() {
         loop
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
-        className="mySwiper"
+        className="mySwiperProduct"
       >
         {photos.map((photo) => (
           <SwiperSlide className="swiperSlide">
