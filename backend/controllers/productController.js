@@ -9,7 +9,7 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
   let images = [];
 
   if (typeof req.body.images === "string") {
-    images.push(req.body.images);
+    images.push(req.file.images);
   } else {
     images = req.body.images;
   }
@@ -28,7 +28,7 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
   }
 
   req.body.images = imagesLinks;
-  req.body.sser = req.User.id;
+  req.body.user = req.User.id;
 
   const product = await Product.create(req.body);
   res.status(201).json({
@@ -76,7 +76,7 @@ exports.getAdminProduct = catchAsyncError(async (req, res, next) => {
 
 //Get Product Details
 exports.getProductDetails = catchAsyncError(async (req, res, next) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id)
 
   if (!product) {
     return next(new errorHandler("Không có Sản phẩm này", 404));

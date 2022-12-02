@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const { type } = require("os");
-const { stringify } = require("querystring");
 
 const productSchema = mongoose.Schema(
   {
@@ -12,6 +10,7 @@ const productSchema = mongoose.Schema(
     description: {
       type: String,
       required: [true, "Plase Enter Product Description"],
+      trim: true,
     },
     price: {
       type: Number,
@@ -20,7 +19,6 @@ const productSchema = mongoose.Schema(
     },
     brand: {
       type: String,
-      required: [true, "Plase Enter Product brand"],
     },
     category: {
       type: String,
@@ -42,24 +40,6 @@ const productSchema = mongoose.Schema(
         },
       },
     ],
-
-    // sizes: [
-    //   {
-    //     type: String,
-    //     required: [true, "Plase Enter Product Size"],
-    //   },
-    // ],
-    // colors: [
-    //   {
-    //     type: String,
-    //     required: [true, "Plase Enter Product Color"],
-    //   },
-    // ],
-    // weight: {
-    //   type: Number,
-    //   required: [true, "Plase Enter Product Weight"],
-    // },
-
     Stock: {
       type: String,
       required: [true, "Plase Enter Product Stock"],
@@ -91,7 +71,6 @@ const productSchema = mongoose.Schema(
         },
       },
     ],
-
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "User",

@@ -23,7 +23,7 @@
 }
 
 .dashboardSummary {
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .dashboardSummary > div {
@@ -47,7 +47,7 @@
 }
 
 .dashboardSummaryBox2 > a {
-  color: rgb(255, 255, 255);
+  color: black;
   font: 300 2rem "Roboto";
   text-align: center;
   background-color: rgba(225, 95, 65, 1);
@@ -56,7 +56,7 @@
   width: 10vmax;
   height: 10vmax;
   margin: 2rem;
-  border-radius: 100%;
+  border-radius: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,12 +65,12 @@
 
 .dashboardSummaryBox2 > a:first-child {
   background-color: rgba(61, 193, 211, 1);
-  color: rgb(255, 255, 255);
+  color: black;
 }
 
 .dashboardSummaryBox2 > a:last-child {
   background-color: rgba(120, 111, 166, 1);
-  color: rgb(255, 255, 255);
+  color: black;
 }
 
 .lineChart {

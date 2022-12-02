@@ -20,6 +20,7 @@
   color: rgba(0, 0, 0, 0.733);
   font: 300 2rem "Roboto";
   text-align: center;
+  text-transform: capitalize;
 }
 
 .productReviewsForm > div {

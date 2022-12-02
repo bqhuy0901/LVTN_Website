@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link className="productCard" to={`/product/${product._id}`}>
       <img src={product.images[0].url} alt={product.name} />
-      <p>{product.name}</p>
+      <h3>{product.name}</h3>
       <div>
         <Rating {...options} />
         {""}
@@ -28,7 +28,9 @@ const ProductCard = ({ product }) => {
           {product.numberOfReviews} (Đánh giá)
         </span>
       </div>
-      <span>{`${formatter.format(product.price)}`}</span>
+      <div className="price">
+        <ins className="text-underline">{`${formatter.format(product.price)}`}</ins>
+      </div>
     </Link>
   );
 };

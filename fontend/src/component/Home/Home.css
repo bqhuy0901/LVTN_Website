@@ -46,18 +46,43 @@
   font: 300 0.7vmax "Roboto";
 }
 
-.productCard > p {
+/* .productCard > p {
   font-family: "Roboto";
   font-size: 1.2vmax;
   margin: 1vmax 0.5vmax;
   margin-bottom: 0;
+} */
+
+.productCard h3 {
+  overflow: hidden;
+  line-height: 1.3em;
+  color: #333;
+  clear: both;
+  white-space: initial;
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.productCard > span {
-  margin: 0.5vmax;
-  color: var(--price);
-  font-family: "Franklin Gothic Medium", sans-serif;
-  font-size: 1vmax;
+.productCard .price {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-bottom: 10px;
+}
+
+.productCard .price ins {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  font-size: 14px;
+  color: #c54934;
+  font-weight: bold;
+  line-height: 15px;
+}
+
+.text-underline {
+  text-decoration: none !important;
 }
 
 .productCard:hover {

@@ -24,9 +24,10 @@ import { NEW_REVIEW_RESET } from "../../../constans/productConstans";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import LabTabs from "../LabTabs/LabTabs";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ProductDetails = ({ match }) => {
+  const id = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -117,129 +118,175 @@ const ProductDetails = ({ match }) => {
       ) : (
         <Fragment>
           <MetaData title={`${product.name} -- SHOPSHOE`} />
-          <div className="ProductDetails">
-            <Carousel>
-              {product.images &&
-                product.images.map((item, i) => (
-                  <img
-                    className="CarouselImage"
-                    key={item.url}
-                    src={item.url}
-                    alt={`${i} Slide`}
-                  />
-                ))}
-            </Carousel>
-            <div>
-              <div className="detailsBlock-1">
-                <h2>{product.name}</h2>
-                <p>Product # {product._id}</p>
-              </div>
-              <div className="detailsBlock-2">
-                <Rating {...options} />
-                <span>({product.numOfReviews} Đánh giá)</span>
-              </div>
+          <div className="ProductContainer">
+            <div className="product-deatails-container">
+              <div className="ProductDetails">
+                <Carousel>
+                  {product.images &&
+                    product.images.map((item, i) => (
+                      <img
+                        className="CarouselImage"
+                        key={item.url}
+                        src={item.url}
+                        alt={`${i} Slide`}
+                      />
+                    ))}
+                </Carousel>
 
-              <div className="detailsBlock-2-2">
-                <ul className="detailsBlock-2-2-ul">
-                  <li className="detailsBlock-2-2-li">
-                    Loại : <span>{product.category}</span>
-                  </li>
-                  <li className="detailsBlock-2-2-li">
-                    Thương hiệu : <span>{product.brand}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="detailsBlock-3">
-                <h1>{`${formatter.format(product.price)}`}</h1>
-                <div className="detailsBlock-3-1">
-                  <div className="detailsBlock-3-1-1">
-                    <label>Số lượng</label>
-                    <button onClick={decreaseQuantity}>
-                      <RemoveIcon />
-                    </button>
-                    <input type="number" value={quantity} readOnly />
-                    <button onClick={increaseQuantity}>
-                      <AddIcon />
-                    </button>
+                <div>
+                  <div className="detailsBlock-1">
+                    <h1 className="pro-m-t-0">{product.name}</h1>
+                    <p>Product # {product._id}</p>
                   </div>
-                  <button
-                    disabled={product.Stock < 1 ? true : false}
-                    onClick={addToCartHandler}
-                  >
-                    Thêm vào giỏ
+                  <div className="detailsBlock-2">
+                    <Rating {...options} />
+                    <span>({product.numOfReviews} Đánh giá)</span>
+                  </div>
+
+                  <div className="detailsBlock-2-2">
+                    <ul className="detailsBlock-2-2-ul">
+                      <li className="detailsBlock-2-2-li">
+                        Loại : <span>{product.category}</span>
+                      </li>
+                      <li className="detailsBlock-2-2-li">
+                        Thương hiệu : <span>{product.brand}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="detailsBlock-3">
+                    <h1>{`${formatter.format(product.price)}`}</h1>
+                    <div className="detailsBlock-3-1">
+                      <div className="detailsBlock-3-1-1">
+                        <label>Số lượng</label>
+                        <button onClick={decreaseQuantity}>
+                          <RemoveIcon />
+                        </button>
+                        <input type="number" value={quantity} readOnly />
+                        <button onClick={increaseQuantity}>
+                          <AddIcon />
+                        </button>
+                      </div>
+                      <button
+                        disabled={product.Stock < 1 ? true : false}
+                        onClick={addToCartHandler}
+                      >
+                        Thêm vào giỏ
+                      </button>
+                    </div>
+                    <p>
+                      Trạng thái :
+                      <b
+                        className={
+                          product.Stock < 1 ? "redColor" : "greenColor"
+                        }
+                      >
+                        {product.Stock < 1 ? "Hết Hàng" : "Còn Hàng"}
+                      </b>
+                    </p>
+                  </div>
+
+                  <div className="detailsBlock-4">
+                    Mô Tả Sản Phẩm : <p>{product.description}</p>
+                  </div>
+
+                  <button onClick={submitReviewToggle} className="submitReview">
+                    Nhập đánh giá
                   </button>
                 </div>
-                <p>
-                  Trạng thái :
-                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                    {product.Stock < 1 ? "Hết Hàng" : "Còn Hàng"}
-                  </b>
-                </p>
               </div>
 
-              <div className="detailsBlock-4">
-                Mô Tả Sản Phẩm : <p>{product.description}</p>
+              <div className="viewStore">
+                <h4 className="title_viewstore">
+                  <img
+                    width="22"
+                    height="22"
+                    src="//theme.hstatic.net/200000278317/1000929405/14/logo_store.png?v=200"
+                    alt="Store"
+                  />
+                  Có tại <span>2</span> cửa hàng
+                </h4>
+
+                <div className="content-store">
+                  <ul>
+                    <li>
+                      <span class="icon">
+                        <img
+                          src="//theme.hstatic.net/200000278317/1000929405/14/icon_store.png?v=200"
+                          alt=""
+                        />
+                      </span>
+                      27 Đường D52, P. 12, Q. Tân Bình, TP. HCM | Hotline: 0901
+                      710 780 - 028 38429720
+                    </li>
+                    <li>
+                      <span class="icon">
+                        <img
+                          src="//theme.hstatic.net/200000278317/1000929405/14/icon_store.png?v=200"
+                          alt=""
+                        />
+                      </span>
+                      32A Thạch Thị Thanh, P. Tân Định, Q. 1, TP. HCM | ĐT: 0901
+                      710 730
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              <button onClick={submitReviewToggle} className="submitReview">
-                Nhập đánh giá
-              </button>
+              <h3 className="reviewsHeading">ĐÁNH GIÁ</h3>
+
+              <Dialog
+                aria-labelledby="simple-dialog-title"
+                open={open}
+                onClose={submitReviewToggle}
+              >
+                <DialogTitle>Nhập Đánh Giá</DialogTitle>
+                <DialogContent className="submitDialog">
+                  <Rating
+                    onChange={(e) => setRating(e.target.value)}
+                    value={rating}
+                    size="large"
+                  />
+
+                  <textarea
+                    className="submitDialogTextArea"
+                    cols="30"
+                    rows="5"
+                    onChange={(e) => setComment(e.target.value)}
+                    value={comment}
+                  ></textarea>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={submitReviewToggle} color="secondary">
+                    Cancel
+                  </Button>
+                  <Button onClick={reviewSubmitHandler} color="primary">
+                    Submit
+                  </Button>
+                </DialogActions>
+              </Dialog>
+
+              {product.reviews && product.reviews[0] ? (
+                <div className="reviews">
+                  {product.reviews &&
+                    product.reviews.map((review) => (
+                      <ReviewCard key={review._id} review={review} />
+                    ))}
+                </div>
+              ) : (
+                <p className="noReviews">No Reviews Yet</p>
+              )}
+
+              <div className="TabContainer">
+                <LabTabs />
+              </div>
+
+              <h2 className="homeHeading">sản phẩm liên quan</h2>
+
+              <div className="product_seeMore">
+                <Link to="/products">Xem Thêm</Link>
+              </div>
             </div>
-          </div>
-
-          <h3 className="reviewsHeading">ĐÁNH GIÁ</h3>
-
-          <Dialog
-            aria-labelledby="simple-dialog-title"
-            open={open}
-            onClose={submitReviewToggle}
-          >
-            <DialogTitle>Nhập Đánh Giá</DialogTitle>
-            <DialogContent className="submitDialog">
-              <Rating
-                onChange={(e) => setRating(e.target.value)}
-                value={rating}
-                size="large"
-              />
-
-              <textarea
-                className="submitDialogTextArea"
-                cols="30"
-                rows="5"
-                onChange={(e) => setComment(e.target.value)}
-                value={comment}
-              ></textarea>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={submitReviewToggle} color="secondary">
-                Cancel
-              </Button>
-              <Button onClick={reviewSubmitHandler} color="primary">
-                Submit
-              </Button>
-            </DialogActions>
-          </Dialog>
-
-          {product.reviews && product.reviews[0] ? (
-            <div className="reviews">
-              {product.reviews &&
-                product.reviews.map((review) => (
-                  <ReviewCard key={review._id} review={review} />
-                ))}
-            </div>
-          ) : (
-            <p className="noReviews">No Reviews Yet</p>
-          )}
-
-          <div className="TabContainer">
-            <LabTabs />
-          </div>
-
-          <h2 className="homeHeading">sản phẩm liên quan</h2>
-
-          <div className="product_seeMore">
-            <Link to="/products">Xem Thêm</Link>
           </div>
         </Fragment>
       )}

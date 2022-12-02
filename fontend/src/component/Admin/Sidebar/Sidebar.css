@@ -14,17 +14,17 @@
 }
 
 .sidebar > a > img:hover {
-  filter: drop-shadow(0 0 10px tomato);
+  filter: drop-shadow(0 0 10px #2196f3);
 }
 .sidebar a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.493);
-  font: 200 1rem "Roboto";
+  font: 400 1.2rem "Roboto";
   padding: 2rem;
   transition: all 0.5s;
 }
 .sidebar a:hover {
-  color: tomato;
+  color: #2196f3;
   transform: scale(1.1);
 }
 

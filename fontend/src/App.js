@@ -58,7 +58,7 @@ function App() {
     getStripeApiKey();
   }, []);
 
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
+  // window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
     <Router>
@@ -75,11 +75,14 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/products" component={Products} />
         <Route path="/products/:keyword" component={Products} />
-
         <Route path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />
-
         <Route exact path="/search" component={Search} />
+        <Route exact path="/password/forgot" component={ForgotPassword} />
+        <Route exact path="/password/reset/:token" component={ResetPassword} />
+        <Route exact path="/product/:id" component={ProductDetails} />
+        <Route exact path="/login" component={LoginSignUp} />
+        <Route exact path="/cart" component={Cart} />
 
         <ProtecteRoute exact path="/account" component={Profile} />
         <ProtecteRoute exact path="/me/update" component={UpdateProfile} />
@@ -88,23 +91,10 @@ function App() {
           path="/password/update"
           component={UpdatePassword}
         />
-
-        <Route exact path="/password/forgot" component={ForgotPassword} />
-        <Route exact path="/password/reset/:token" component={ResetPassword} />
-
-        <Route exact path="/product/:id" component={ProductDetails} />
-
-        <Route exact path="/login" component={LoginSignUp} />
-
-        <Route exact path="/cart" component={Cart} />
-
         <ProtecteRoute exact path="/shipping" component={Shipping} />
-
         <ProtecteRoute exact path="/success" component={OrderSuccess} />
         <ProtecteRoute exact path="/orders" component={MyOrder} />
-
         <ProtecteRoute exact path="/order/confirm" component={ConfirmOrder} />
-
         <ProtecteRoute exact path="/order/:id" component={OrderDetails} />
 
         <ProtecteRoute

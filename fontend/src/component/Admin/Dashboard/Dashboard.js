@@ -17,6 +17,7 @@ const Dashboard = () => {
   const { users } = useSelector((state) => state.allUsers);
 
   let totalAmount = 0;
+
   orders &&
     orders.forEach((item) => {
       totalAmount += item.totalPrice;
@@ -50,11 +51,11 @@ const Dashboard = () => {
   };
 
   const doughnutState = {
-    labels: ["outOfStock", "InStock"],
+    labels: ["Out of Stock", "InStock"],
     datasets: [
       {
-        backgroundColor: ["#00A6B4", "#6800B4"],
-        hoverBackgroundColor: ["#4B5000", "#35014F"],
+        backgroundColor: ["#e74c3c", "#2ecc71"],
+        hoverBackgroundColor: ["#e74c3c", "#2ecc71"],
         data: [outOfStock, products.length - outOfStock],
       },
     ],
@@ -81,15 +82,15 @@ const Dashboard = () => {
           </div>
           <div className="dashboardSummaryBox2">
             <Link to="/admin/products">
-              <p>Sản phẩm</p>
+              <p>PRODUCTS</p>
               <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">
-              <p>Đơn hàng</p>
+              <p>ORDERS</p>
               <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
-              <p>Tài khoản</p>
+              <p>USERS</p>
               <p>{users && users.length}</p>
             </Link>
           </div>

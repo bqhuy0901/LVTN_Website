@@ -80,8 +80,8 @@ const OrderDetails = ({ match }) => {
                 </div>
 
                 <div>
-                  <p>Số Lượng:</p>
-                  <span>
+                  <p>Tổng Tiền:</p>
+                  <span className="price">
                     {formatter.format(order.totalPrice && order.totalPrice)}
                   </span>
                 </div>
@@ -113,7 +113,7 @@ const OrderDetails = ({ match }) => {
                       <Link to={`/product/${item.product}`}>
                         {item.name}
                       </Link>{" "}
-                      <span>
+                      <span className="price">
                         {item.quantity} X {formatter.format(item.price)} ={" "}
                         <b>{formatter.format(item.price * item.quantity)}</b>
                       </span>

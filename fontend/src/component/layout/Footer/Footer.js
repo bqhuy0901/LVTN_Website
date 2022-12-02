@@ -1,12 +1,12 @@
 import React from "react";
-import {
-  FaPhoneAlt,
-  FaTwitter,
-  FaGithub,
-  FaFacebook,
-  FaEnvelope,
-  FaMapMarkedAlt,
-} from "react-icons/fa";
+
+import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
+import PhoneIcon from "@mui/icons-material/Phone";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
 import "./Footer.css";
 
 const Footer = () => {
@@ -22,13 +22,9 @@ const Footer = () => {
             Home
           </a>
 
-          <a href="#">Blog</a>
-
           <a href="#">Pricing</a>
 
           <a href="#">About</a>
-
-          <a href="#">Faq</a>
 
           <a href="#">Contact</a>
         </p>
@@ -38,19 +34,19 @@ const Footer = () => {
 
       <div className="footer-center">
         <div>
-          <FaMapMarkedAlt />
+          <AddLocationAltIcon />
           <p>
             <span>180 Cao Lỗ</span> Phường 4, Quận 8, Thành phố Hồ Chí Minh
           </p>
         </div>
 
         <div>
-          <FaPhoneAlt />
+          <PhoneIcon />
           <p>090xxxxxx</p>
         </div>
 
         <div>
-          <FaEnvelope />
+          <MailOutlineIcon />
           <p>
             <a href="mailto:shoeshop@gmail.com">shoeshop@gmail.com</a>
           </p>
@@ -69,13 +65,13 @@ const Footer = () => {
 
         <div className="footer-icons">
           <a href="#">
-            <FaFacebook />
+            <FacebookIcon />
           </a>
           <a href="#">
-            <FaTwitter />
+            <TwitterIcon />
           </a>
           <a href="#">
-            <FaGithub />
+            <GitHubIcon />
           </a>
         </div>
       </div>

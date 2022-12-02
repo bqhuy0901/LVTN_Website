@@ -1,3 +1,14 @@
+.ProductContainer {
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+product-deatails-container {
+  width: 80%;
+}
+
 .ProductDetails {
   background-color: rgb(255, 255, 255);
   width: 100vw;
@@ -5,6 +16,8 @@
   padding: 6vmax;
   box-sizing: border-box;
   display: flex;
+  margin-top: 24px;
+  position: relative;
 }
 
 .ProductDetails > div {
@@ -27,9 +40,18 @@
   height: 35vmax;
 }
 
-.detailsBlock-1 > h2 {
-  color: var(--color);
-  font: 500 1.6vmax "Roboto";
+.detailsBlock-1 > h1 {
+  white-space: normal !important;
+  overflow: initial;
+  font-size: 28px;
+  color: #0e1c22;
+  margin-bottom: 8px;
+  font-weight: normal;
+  text-overflow: ellipsis;
+}
+
+.pro-m-t-0 {
+  margin-top: 0 !important;
 }
 
 .detailsBlock-1 > p {
@@ -129,7 +151,7 @@
 .detailsBlock-3-1-1 > input {
   border: none;
   padding: 0.5vmax;
-  width: 1.5vmax;
+  width: 2.5vmax;
   text-align: center;
   font: 500 1.5vmax "Roboto";
   color: var(--color);
@@ -246,6 +268,68 @@
   font: 400 1.3vmax "Gill Sans";
   text-align: center;
   color: rgba(0, 0, 0, 0.548);
+}
+
+.viewStore {
+  width: 37%;
+  border: 1px solid black;
+  font-size: 15px;
+  text-transform: uppercase;
+  outline: none;
+  transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -ms-transition: all 0.3s ease-in-out 0s;
+  background-size: 25px;
+  background-position: 45px 11px;
+  text-align: center;
+  line-height: 47px;
+  margin-bottom: 10px;
+  margin-left: 50%;
+}
+
+.viewStore .title_viewstore {
+  font-size: 18px;
+  display: block;
+  text-align: left;
+  padding-left: 10px;
+  color: #d71c36;
+}
+
+.viewStore .title_viewstore img {
+  margin-right: 3px;
+  max-width: 100%;
+  vertical-align: middle;
+  height: initial !important;
+}
+
+.viewStore .title_viewstore h4 {
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.viewStore .content-store ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.viewStore .content-store ul li {
+  color: #000;
+  text-align: left;
+  padding: 0px 15px;
+  line-height: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  display: list-item;
 }
 
 .TabContainer {

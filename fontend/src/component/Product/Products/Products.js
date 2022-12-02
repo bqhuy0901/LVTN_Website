@@ -15,21 +15,13 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import LastPageIcon from "@mui/icons-material/LastPage";
 
 const categories = [
-  "Giày Bóng đá",
+  "Giày Cỏ Nhân Tạo",
   "Giay Bóng rổ",
   "Giày Fusal",
   "Giày Chạy bộ",
 ];
 
-const brands = [
-  "Nike",
-  "Adidas",
-  "Puma",
-  "Mizuno",
-  "Jordan",
-  "Kamito",
-  ".....",
-];
+const brands = ["Nike", "Adidas", "Puma", "Mizuno", "....."];
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
@@ -37,7 +29,7 @@ const Products = ({ match }) => {
   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 10000000]);
+  const [price, setPrice] = useState([0, 4000000]);
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
 
@@ -81,6 +73,10 @@ const Products = ({ match }) => {
 
   let count = filteredProductsCount;
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <Fragment>
       {loading ? (
@@ -97,18 +93,21 @@ const Products = ({ match }) => {
           </div>
 
           <div className="filterBox">
-            <Typography>Mức giá</Typography>
+            <button className="refreshPage" type="button" onClick={refreshPage}>
+              CLEAR FILTERS
+            </button>
+            <Typography component="h1">Mức giá</Typography>
             <Slider
-              size="large"
+              defaultValue={[500000, 4000000]}
               value={price}
               onChange={priceHandler}
-              valueLabelDisplay="auto"
+              valueLabelDisplay="on"
               aria-labelledby="range-slider"
               min={500000}
               max={4000000}
             />
 
-            <Typography>Loại Giày</Typography>
+            <Typography component="h1">Loại Giày</Typography>
             <ul className="categoryBox">
               {categories.map((category) => (
                 <li
@@ -121,7 +120,7 @@ const Products = ({ match }) => {
               ))}
             </ul>
 
-            <Typography>Thương Hiệu</Typography>
+            <Typography component="h1">Thương Hiệu</Typography>
             <ul className="categoryBox">
               {brands.map((brand) => (
                 <li

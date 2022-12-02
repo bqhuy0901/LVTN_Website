@@ -137,13 +137,13 @@ const ProductReviews = ({ history }) => {
             className="productReviewsForm"
             onSubmit={productReviewsSubmitHandler}
           >
-            <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
+            <h1 className="productReviewsFormHeading">TẤT CẢ ĐÁNH GIÁ</h1>
 
             <div>
               <StarIcon />
               <input
                 type="text"
-                placeholder="Product Id"
+                placeholder="ID Sản Phẩm"
                 required
                 value={productId}
                 onChange={(e) => setProductId(e.target.value)}
@@ -157,7 +157,7 @@ const ProductReviews = ({ history }) => {
                 loading ? true : false || productId === "" ? true : false
               }
             >
-              Search
+              Tìm Kiếm
             </Button>
           </form>
 
@@ -171,7 +171,9 @@ const ProductReviews = ({ history }) => {
               autoHeight
             />
           ) : (
-            <h1 className="productReviewsFormHeading">No Reviews Found</h1>
+            <h1 className="productReviewsFormHeading">
+              Không tìm thấy đánh giá nào
+            </h1>
           )}
         </div>
       </div>

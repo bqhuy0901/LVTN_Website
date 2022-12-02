@@ -30,21 +30,13 @@ const NewProduct = ({ history }) => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Giày Bóng đá",
+    "Giày Cỏ Nhân Tạo",
     "Giay Bóng rổ",
     "Giày Fusal",
     "Giày Chạy bộ",
   ];
 
-  const brands = [
-    "Nike",
-    "Adidas",
-    "Puma",
-    "Mizuno",
-    "Jordan",
-    "Kamito",
-    ".....",
-  ];
+  const brands = ["Nike", "Adidas", "Puma", "Mizuno", "....."];
 
   useEffect(() => {
     if (error) {
