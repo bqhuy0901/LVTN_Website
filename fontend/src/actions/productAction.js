@@ -69,6 +69,23 @@ export const getProduct =
     }
   };
 
+//Get Related Product
+export const getRelatedProduct = () => async (dispatch) => {
+  try {
+    const { data } = await axios.get("/api/v1/product/related-product");
+
+    dispatch({
+      type: ALL_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ALL_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 // Get All Products For Admin
 export const getAdminProduct = () => async (dispatch) => {
   try {

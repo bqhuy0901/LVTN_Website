@@ -39,7 +39,6 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
 
 //Get all Product
 exports.getAllProduct = catchAsyncError(async (req, res, next) => {
-  //return next(new errorHandler("This is my temp error",500));
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
 
@@ -64,6 +63,21 @@ exports.getAllProduct = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//Related Product
+exports.getRelatedProduct = catchAsyncError(async (req, res, next) => {
+  const products = await Product.find({
+    $or: [{ Stock: { $gt: 1 } }, { price: { $lt: 1000000 } }],
+  })
+    .sort("price")
+    .limit(4)
+    .skip(0);
+
+  res.status(201).json({
+    success: true,
+    products,
+  });
+});
+
 //Get all Product (Admin)
 exports.getAdminProduct = catchAsyncError(async (req, res, next) => {
   const products = await Product.find();
@@ -76,7 +90,7 @@ exports.getAdminProduct = catchAsyncError(async (req, res, next) => {
 
 //Get Product Details
 exports.getProductDetails = catchAsyncError(async (req, res, next) => {
-  const product = await Product.findById(req.params.id)
+  const product = await Product.findById(req.params.id);
 
   if (!product) {
     return next(new errorHandler("Không có Sản phẩm này", 404));

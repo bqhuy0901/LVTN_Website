@@ -26,6 +26,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import LabTabs from "../LabTabs/LabTabs";
 import { Link } from "react-router-dom";
 import ProductCard from "../../Home/ProductCard";
+import RelatedProduct from "../RelatedProduct/RelatedProduct";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -38,8 +39,6 @@ const ProductDetails = ({ match }) => {
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
-
-  const { products } = useSelector((state) => state.products);
 
   const options = {
     size: "large",
@@ -285,12 +284,7 @@ const ProductDetails = ({ match }) => {
 
               <h2 className="homeHeading">sản phẩm liên quan</h2>
 
-              <div className="products">
-                {products &&
-                  products.map((product) => (
-                    <ProductCard key={product._id} product={product} />
-                  ))}
-              </div>
+              <RelatedProduct />
 
               <div className="product_seeMore">
                 <Link to="/products">Xem Thêm</Link>

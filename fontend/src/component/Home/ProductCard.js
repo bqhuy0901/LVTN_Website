@@ -29,7 +29,9 @@ const ProductCard = ({ product }) => {
         </span>
       </div>
       <div className="price">
-        <ins className="text-underline">{`${formatter.format(product.price)}`}</ins>
+        <ins className="text-underline">{`${formatter.format(
+          product.price
+        )}`}</ins>
       </div>
     </Link>
   );
