@@ -69,7 +69,6 @@ const LoginSignUp = ({ history, location }) => {
     }
   };
 
-
   const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
@@ -136,6 +135,7 @@ const LoginSignUp = ({ history, location }) => {
                     onChange={(e) => setLoginPassword(e.target.value)}
                   />
                 </div>
+
                 <Link to="/password/forgot">Forget Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
               </form>

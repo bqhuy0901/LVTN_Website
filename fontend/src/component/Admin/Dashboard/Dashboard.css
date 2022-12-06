@@ -74,13 +74,15 @@
 }
 
 .lineChart {
-  width: 75%;
+  width: 50%;
   margin: auto;
+  float: left;
 }
 
 .doughnutChart {
-  width: 30vmax;
+  width: 50%;
   margin: auto;
+  float: right;
 }
 
 @media screen and (max-width: 600px) {

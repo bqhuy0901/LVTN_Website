@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../../actions/productAction";
 import { getAllOrders } from "../../../actions/orderAction";
-import { Line, Doughnut } from "react-chartjs-2";
 import { getAllUsers } from "../../../actions/userAction";
 
 const Dashboard = () => {
@@ -23,43 +22,13 @@ const Dashboard = () => {
       totalAmount += item.totalPrice;
     });
 
-  let outOfStock = 0;
 
-  products &&
-    products.forEach((item) => {
-      if (item.Stock === 0) {
-        outOfStock += 1;
-      }
-    });
 
   useEffect(() => {
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
     dispatch(getAllUsers());
   }, [dispatch]);
-
-  const lineState = {
-    labels: ["Số tiền ban đầu", "Số tiền kiếm được"],
-    datasets: [
-      {
-        label: "TỔNG CỘNG",
-        backgroundColor: ["rgba(255, 82, 82,1.0)"],
-        hoverBackgroundColor: ["rgba(255, 82, 82,1.0)"],
-        data: [0, totalAmount],
-      },
-    ],
-  };
-
-  const doughnutState = {
-    labels: ["Out of Stock", "InStock"],
-    datasets: [
-      {
-        backgroundColor: ["#e74c3c", "#2ecc71"],
-        hoverBackgroundColor: ["#e74c3c", "#2ecc71"],
-        data: [outOfStock, products.length - outOfStock],
-      },
-    ],
-  };
 
   const formatter = new Intl.NumberFormat("vi-VN", {
     style: "currency",
@@ -73,11 +42,10 @@ const Dashboard = () => {
 
       <div className="dashboardContainer">
         <Typography component="h1">Dashboard</Typography>
-
         <div className="dashboardSummary">
           <div>
             <p>
-              Tổng cộng: <span>{formatter.format(totalAmount)}</span>{" "}
+              TOTAL SALES: <span>{formatter.format(totalAmount)}</span>{" "}
             </p>
           </div>
           <div className="dashboardSummaryBox2">
@@ -95,13 +63,35 @@ const Dashboard = () => {
             </Link>
           </div>
         </div>
-
         <div className="lineChart">
-          <Line data={lineState} />
+          <h2>SALES STATISTAC</h2>
+          <iframe
+            style={{
+              backgroundColor: "#FFFFFF",
+              border: "none",
+              borderRadius: "2px",
+              boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)",
+            }}
+            width="640"
+            height="480"
+            src="https://charts.mongodb.com/charts-ecomerce-rypfr/embed/charts?id=638ebaa3-fcb6-4c9f-8d3f-cb3645d4fb8f&maxDataAge=3600&theme=light&autoRefresh=true"
+            title="SALES STATISTAC"
+          ></iframe>
         </div>
-
         <div className="doughnutChart">
-          <Doughnut data={doughnutState} />
+          <h2>PRODUCTS STATISTAC</h2>
+          <iframe
+            style={{
+              backgroundColor: "#FFFFFF",
+              border: "none",
+              borderRadius: "2px",
+              boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)",
+            }}
+            width="640"
+            height="480"
+            src="https://charts.mongodb.com/charts-ecomerce-rypfr/embed/charts?id=638ebc63-a857-47a1-8763-3c86e4314fdb&maxDataAge=3600&theme=light&autoRefresh=true"
+            title="PRODUCTS STATISTAC"
+          ></iframe>
         </div>
       </div>
     </div>

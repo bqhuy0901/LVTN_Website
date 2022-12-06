@@ -29,7 +29,7 @@ const Products = ({ match }) => {
   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 4000000]);
+  const [price, setPrice] = useState([1, 4000000]);
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
 
@@ -98,7 +98,8 @@ const Products = ({ match }) => {
               CLEAR FILTERS
             </button>
             <Typography component="h1">Mức giá</Typography>
-            <Slider
+
+            {/* <Slider
               defaultValue={[500000, 4000000]}
               value={price}
               onChange={priceHandler}
@@ -106,6 +107,18 @@ const Products = ({ match }) => {
               aria-labelledby="range-slider"
               min={500000}
               max={4000000}
+            /> */}
+
+            <Slider
+              aria-label="Temperature"
+              defaultValue={[500000, 4000000]}
+              value={price}
+              valueLabelDisplay="auto"
+              step={500000}
+              marks
+              min={50000}
+              max={4000000}
+              onChange={priceHandler}
             />
 
             <Typography component="h1">Loại Giày</Typography>
