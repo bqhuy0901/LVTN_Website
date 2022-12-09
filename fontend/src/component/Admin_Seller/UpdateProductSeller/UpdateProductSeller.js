@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
-import "../NewProduct/NewProduct.css";
+import "../NewProductSeller/NewProduct.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  updateProduct,
+  updateProductSeller,
   getProductDetails,
   clearErrors,
 } from "../../../actions/productAction";
@@ -15,10 +15,10 @@ import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import CategoryIcon from "@mui/icons-material/Category";
-import Sidebar from "../Sidebar/Sidebar";
+import SidebarSeller from "../SidebarSeller/SidebarSeller";
 import { UPDATE_PRODUCT_RESET } from "../../../constans/productConstans";
 
-const UpdateProduct = ({ history, match }) => {
+const UpdateProductSeller = ({ history, match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -75,7 +75,7 @@ const UpdateProduct = ({ history, match }) => {
 
     if (isUpdated) {
       alert.success("Đã sửa phẩm thành công");
-      history.push("/admin/products");
+      history.push("/seller/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [
@@ -104,7 +104,7 @@ const UpdateProduct = ({ history, match }) => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(updateProduct(productId, myForm));
+    dispatch(updateProductSeller(productId, myForm));
   };
 
   const updateProductImagesChange = (e) => {
@@ -132,7 +132,7 @@ const UpdateProduct = ({ history, match }) => {
     <Fragment>
       <MetaData title="New Product" />
       <div className="dashboard">
-        <Sidebar />
+        <SidebarSeller />
         <div className="newProductContainer">
           <form
             className="createProductForm"
@@ -247,4 +247,4 @@ const UpdateProduct = ({ history, match }) => {
   );
 };
 
-export default UpdateProduct;
+export default UpdateProductSeller;

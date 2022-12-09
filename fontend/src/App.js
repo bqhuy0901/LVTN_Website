@@ -40,6 +40,13 @@ import UserList from "./component/Admin/UserList/UserList";
 import UpdateUser from "./component/Admin/UpdateUser/UpdateUser";
 import ProductReview from "./component/Admin/ProductReview/ProductReview";
 import NotFound from "./component/layout/NotFound/NotFound";
+import DashboardSeller from "./component/Admin_Seller/Dashboard/DashboardSeller";
+import ProductListSeller from "./component/Admin_Seller/ProductList/ProductListSeller";
+import NewProductSeller from "./component/Admin_Seller/NewProductSeller/NewProductSeller";
+import UpdateProductSeller from "./component/Admin_Seller/UpdateProductSeller/UpdateProductSeller";
+import OrderListSeller from "./component/Admin_Seller/OrderListSeller/OrderListSeller";
+import ProcessOrderSeller from "./component/Admin_Seller/ProcessOrderSeller.js/ProcessOrderSeller";
+import ProductReviewsSeller from "./component/Admin_Seller/ProductReviewSeller/ProductReviewSeller";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -105,10 +112,24 @@ function App() {
         />
 
         <ProtecteRoute
+          isSeller={true}
+          exact
+          path="/seller/dashboard"
+          component={DashboardSeller}
+        />
+
+        <ProtecteRoute
           isAdmin={true}
           exact
           path="/admin/products"
           component={ProductList}
+        />
+
+        <ProtecteRoute
+          isSeller={true}
+          exact
+          path="/seller/products"
+          component={ProductListSeller}
         />
 
         <ProtecteRoute
@@ -119,10 +140,24 @@ function App() {
         />
 
         <ProtecteRoute
+          isSeller={true}
+          exact
+          path="/seller/product"
+          component={NewProductSeller}
+        />
+
+        <ProtecteRoute
           isAdmin={true}
           exact
           path="/admin/product/:id"
           component={UpdateProduct}
+        />
+
+        <ProtecteRoute
+          isSeller={true}
+          exact
+          path="/seller/product/:id"
+          component={UpdateProductSeller}
         />
 
         <ProtecteRoute
@@ -133,10 +168,24 @@ function App() {
         />
 
         <ProtecteRoute
+          isSeller={true}
+          exact
+          path="/seller/orders"
+          component={OrderListSeller}
+        />
+
+        <ProtecteRoute
           isAdmin={true}
           exact
           path="/admin/order/:id"
           component={ProcessOrder}
+        />
+
+        <ProtecteRoute
+          isSeller={true}
+          exact
+          path="/seller/order/:id"
+          component={ProcessOrderSeller}
         />
 
         <ProtecteRoute
@@ -158,6 +207,13 @@ function App() {
           exact
           path="/admin/reviews"
           component={ProductReview}
+        />
+
+        <ProtecteRoute
+          isSeller={true}
+          exact
+          path="/seller/reviews"
+          component={ProductReviewsSeller}
         />
 
         <Route

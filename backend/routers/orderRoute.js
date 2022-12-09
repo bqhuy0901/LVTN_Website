@@ -26,4 +26,14 @@ router
   .put(isAuthenticcatedUser, authorizeRoles("admin"), updateOrder)
   .delete(isAuthenticcatedUser, authorizeRoles("admin"), deleteOrder);
 
+//Seller
+router
+  .route("/seller/orders")
+  .get(isAuthenticcatedUser, authorizeRoles("seller"), getAllOrders);
+
+router
+  .route("/seller/order/:id")
+  .put(isAuthenticcatedUser, authorizeRoles("seller"), updateOrder)
+  .delete(isAuthenticcatedUser, authorizeRoles("seller"), deleteOrder);
+
 module.exports = router;

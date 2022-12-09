@@ -43,8 +43,20 @@ const UserOptions = ({ user }) => {
     });
   }
 
+  if (user.role === "seller") {
+    options.unshift({
+      icon: <DashboadIcon />,
+      name: "Dashboard",
+      func: dashboardSeller,
+    });
+  }
+
   function dashboard() {
     history.push("/admin/dashboard");
+  }
+
+  function dashboardSeller() {
+    history.push("/seller/dashboard");
   }
 
   function order() {
