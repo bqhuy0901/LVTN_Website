@@ -66,11 +66,10 @@ exports.getAllProduct = catchAsyncError(async (req, res, next) => {
 //Related Product
 exports.getRelatedProduct = catchAsyncError(async (req, res, next) => {
   const products = await Product.find({
-    $or: [{ Stock: { $gt: 1 } }, { price: { $lt: 1000000 } }],
+    $or: [{ Stock: { $gt: 1 } }, { price: { $gt: 1500000 } }],
   })
     .sort("price")
-    .limit(4)
-    .skip(0);
+    .limit(4);
 
   res.status(201).json({
     success: true,

@@ -40,7 +40,7 @@ const Payment = ({ history }) => {
     totalPrice: orderInfo.totalPrice,
   };
 
-  const paymentData = { amount: Math.round(orderInfo.totalPrice * 10) };
+  const paymentData = { amount: Math.round(orderInfo.totalPrice * 100) };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -114,7 +114,7 @@ const Payment = ({ history }) => {
   const formatter = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
-    maximumFractionDigits: 9,
+    maximumFractionDigits: 11,
   });
 
   return (

@@ -177,6 +177,7 @@ exports.updatePassword = catchAsynsError(async (req, res, next) => {
 exports.updateProfile = catchAsynsError(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
+    avatar: req.body.avatar,
   };
 
   if (req.body.avatar !== "") {

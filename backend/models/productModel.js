@@ -15,7 +15,7 @@ const productSchema = mongoose.Schema(
     price: {
       type: Number,
       required: [true, "Plase Enter Product Price"],
-      maxLength: [8, "Price cannot exceed 8 characters"],
+      maxLength: [11, "Price cannot exceed 8 characters"],
     },
     brand: {
       type: String,
