@@ -15,6 +15,7 @@ import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import CategoryIcon from "@mui/icons-material/Category";
 import SidebarSeller from "../SidebarSeller/SidebarSeller";
+import CheckroomIcon from "@mui/icons-material/Checkroom";
 import { NEW_PRODUCT_RESET } from "../../../constans/productConstans";
 
 const NewProductSeller = ({ history }) => {
@@ -28,6 +29,7 @@ const NewProductSeller = ({ history }) => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
+  const [size, setSize] = useState(0);
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -38,6 +40,8 @@ const NewProductSeller = ({ history }) => {
     "Giày Fusal",
     "Giày Chạy bộ",
   ];
+
+  const sizes = [38, 39, 40, 41, 42, 43, 44, 45];
 
   const brands = ["Nike", "Adidas", "Puma", "Mizuno", "....."];
 
@@ -65,6 +69,7 @@ const NewProductSeller = ({ history }) => {
     myForm.set("category", category);
     myForm.set("brand", brand);
     myForm.set("Stock", Stock);
+    myForm.set("size", size);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -157,6 +162,18 @@ const NewProductSeller = ({ history }) => {
                 {brands.map((bra) => (
                   <option key={bra} value={bra}>
                     {bra}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <CheckroomIcon />
+              <select onChange={(e) => setSize(e.target.value)}>
+                <option value="">Size</option>
+                {sizes.map((siz) => (
+                  <option key={siz} value={siz}>
+                    {siz}
                   </option>
                 ))}
               </select>

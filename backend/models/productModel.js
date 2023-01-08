@@ -24,6 +24,10 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Plase Enter Product Category"],
     },
+    size: {
+      type: Number,
+      required: [true, "Plase Enter Product Size"],
+    },
     ratings: {
       type: Number,
       default: 0,
