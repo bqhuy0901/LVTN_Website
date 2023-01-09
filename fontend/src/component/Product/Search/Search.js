@@ -23,7 +23,7 @@ const Search = ({ history }) => {
           placeholder="Tìm kiếm..."
           onChange={(e) => setKeyword(e.target.value)}
         />
-        <input type="submit" value="Search" />
+        <input type="submit" value="search" />
       </form>
     </Fragment>
   );

@@ -27,7 +27,7 @@ const Home = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData tilte="HOME PAGE IS WORKING" />
+          <MetaData tilte="Shoes Shop" />
           <Slider />
           <h2 className="homeHeading">sản phẩm nổi bật</h2>
           <div className="container" id="container">
