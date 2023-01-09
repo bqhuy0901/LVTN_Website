@@ -29,7 +29,7 @@ const Products = ({ match }) => {
   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([1, 4000000]);
+  const [price, setPrice] = useState([1, 5000000]);
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
 
@@ -92,32 +92,22 @@ const Products = ({ match }) => {
                 <ProductCard key={product._id} product={product} />
               ))}
           </div>
-
+          
           <div className="filterBox">
             <button className="refreshPage" type="button" onClick={refreshPage}>
               CLEAR FILTERS
             </button>
             <Typography component="h1">Mức giá</Typography>
 
-            {/* <Slider
-              defaultValue={[500000, 4000000]}
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="on"
-              aria-labelledby="range-slider"
-              min={500000}
-              max={4000000}
-            /> */}
-
             <Slider
               aria-label="Temperature"
-              defaultValue={[500000, 4000000]}
+              defaultValue={[500000, 5000000]}
               value={price}
               valueLabelDisplay="auto"
               step={500000}
               marks
-              min={50000}
-              max={4000000}
+              min={500000}
+              max={5000000}
               onChange={priceHandler}
             />
 

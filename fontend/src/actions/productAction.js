@@ -36,10 +36,10 @@ export const getProduct =
   (
     keyword = "",
     currentPage = 1,
-    price = [0, 4000000],
+    price = [0, 5000000],
     category,
     brand,
-    ratings = 0
+    ratings = 0,
   ) =>
   async (dispatch) => {
     try {
@@ -54,7 +54,11 @@ export const getProduct =
       if (brand) {
         link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&brand=${brand}&ratings[gte]=${ratings}`;
       }
-
+      //filter đánh giá
+     /* if (ratings) {
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[lte]=${ratings}`;
+      }*/
+    
       const { data } = await axios.get(link);
 
       dispatch({

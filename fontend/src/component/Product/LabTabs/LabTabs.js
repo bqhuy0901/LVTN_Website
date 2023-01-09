@@ -20,11 +20,13 @@ const LabTabs = () => {
               label="CHÍNH SÁCH BẢO HÀNH"
               value="1"
             />
+        
             <Tab
               label="LỜI KHUYÊN CHỌN GIÀY"
               value="2"
               sx={{ paddingRight: "40px", marginRight: "20px" }}
             />
+          
             <Tab
               label="CÁCH ĐO SIZE GIÀY"
               value="3"
@@ -38,7 +40,7 @@ const LabTabs = () => {
               <div className="tab_pro_content">
                 <p>
                   <span>
-                    Thanh Hùng Futsal luôn nỗ lực mang đến trải nghiệm mua sắm
+                    ShopShoe luôn nỗ lực mang đến trải nghiệm mua sắm
                     tuyệt vời dành cho Khách Hàng từ việc đa dạng hoá mẫu mã từ
                     nhiều thương hiệu quốc tế nổi tiếng, dịch vụ tư vấn bán hàng
                     online, offline và những dịch vụ hậu mãi không ngừng được
@@ -60,7 +62,7 @@ const LabTabs = () => {
                 </p>
                 <p>
                   <span>
-                    Dưới đây là chính sách bảo hành của Thanh Hùng Futsal.
+                    Dưới đây là chính sách bảo hành của ShopShoe.
                   </span>
                 </p>
 
@@ -72,7 +74,7 @@ const LabTabs = () => {
 
                 <p>
                   <span>
-                    - Thanh Hùng Futsal hỗ trợ khách hàng{" "}
+                    - ShopShoe hỗ trợ khách hàng{" "}
                     <strong>bảo hành&nbsp;sửa chữa 3 tháng </strong>miễn phí:
                   </span>
                 </p>
@@ -80,7 +82,7 @@ const LabTabs = () => {
                 <ol>
                   <li>
                     <span>
-                      Sản phẩm phải do chính Shop Thanh Hùng Futsal&nbsp;phân
+                      Sản phẩm phải do chính ShopShoe&nbsp;phân
                       phối.
                     </span>
                   </li>
@@ -101,7 +103,7 @@ const LabTabs = () => {
 
                 <p>
                   <span>
-                    - Thanh Hùng Futsal <strong>từ chối bảo hành</strong> sản
+                    - ShopShoe <strong>từ chối bảo hành</strong> sản
                     phẩm đối với các trường hợp:
                   </span>
                 </p>

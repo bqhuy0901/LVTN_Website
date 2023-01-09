@@ -25,7 +25,6 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import LabTabs from "../LabTabs/LabTabs";
 import { Link } from "react-router-dom";
-import ProductCard from "../../Home/ProductCard";
 import RelatedProduct from "../RelatedProduct/RelatedProduct";
 
 const ProductDetails = ({ match }) => {
@@ -39,7 +38,6 @@ const ProductDetails = ({ match }) => {
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
-
   const options = {
     size: "large",
     value: product.ratings,
@@ -94,6 +92,7 @@ const ProductDetails = ({ match }) => {
   });
 
   useEffect(() => {
+
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -166,8 +165,18 @@ const ProductDetails = ({ match }) => {
                         <input type="number" value={quantity} readOnly />
                         <button onClick={increaseQuantity}>
                           <AddIcon />
-                        </button>
+                        </button><br />
                       </div>
+                      <div className="size-select">
+                        <label>Size:</label>
+                        <select>
+                            <option value="size giày">{product.size}</option>
+                            <option value="size giày">{product.size}</option>
+                            <option value="size giày">{product.size}</option>
+                            <option value="size giày">{product.size}</option>
+                        </select>
+                      </div>
+
                       <button
                         disabled={product.Stock < 1 ? true : false}
                         onClick={addToCartHandler}
