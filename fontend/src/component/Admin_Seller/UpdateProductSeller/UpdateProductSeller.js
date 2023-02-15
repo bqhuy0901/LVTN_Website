@@ -16,6 +16,7 @@ import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import CategoryIcon from "@mui/icons-material/Category";
 import SidebarSeller from "../SidebarSeller/SidebarSeller";
+import CheckroomIcon from "@mui/icons-material/Checkroom";
 import { UPDATE_PRODUCT_RESET } from "../../../constans/productConstans";
 
 const UpdateProductSeller = ({ history, match }) => {
@@ -36,6 +37,7 @@ const UpdateProductSeller = ({ history, match }) => {
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [Stock, setStock] = useState(0);
+  const [size, setSize] = useState(0);
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -46,6 +48,8 @@ const UpdateProductSeller = ({ history, match }) => {
     "Giày Fusal",
     "Giày Chạy bộ",
   ];
+
+  const sizes = [38, 39, 40, 41, 42, 43, 44, 45];
 
   const brands = ["Nike", "Adidas", "Puma", "Mizuno", "....."];
 
@@ -60,6 +64,7 @@ const UpdateProductSeller = ({ history, match }) => {
       setPrice(product.price);
       setCategory(product.category);
       setStock(product.Stock);
+      setSize(product.size);
       setOldImages(product.images);
     }
 
@@ -99,6 +104,7 @@ const UpdateProductSeller = ({ history, match }) => {
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("brand", brand);
+    myForm.set("size", size);
     myForm.set("Stock", Stock);
 
     images.forEach((image) => {
@@ -130,7 +136,7 @@ const UpdateProductSeller = ({ history, match }) => {
 
   return (
     <Fragment>
-      <MetaData title="New Product" />
+      <MetaData title="Edit Product" />
       <div className="dashboard">
         <SidebarSeller />
         <div className="newProductContainer">
@@ -139,7 +145,7 @@ const UpdateProductSeller = ({ history, match }) => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Edit Product</h1>
 
             <div>
               <SpellcheckIcon />
@@ -194,6 +200,18 @@ const UpdateProductSeller = ({ history, match }) => {
                 {brands.map((bra) => (
                   <option key={bra} value={bra}>
                     {bra}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <CheckroomIcon />
+              <select onChange={(e) => setSize(e.target.value)}>
+                <option value="">Size</option>
+                {sizes.map((siz) => (
+                  <option key={siz} value={siz}>
+                    {siz}
                   </option>
                 ))}
               </select>

@@ -65,7 +65,7 @@ userSchema.methods.getJWTToken = function () {
   });
 };
 
-//Compare Password
+//So Sánh Password
 userSchema.methods.comparePassword = async function (enterdPassword) {
   return await bcrypt.compare(enterdPassword, this.password);
 };
@@ -75,7 +75,7 @@ userSchema.methods.getResetPasswordToken = function () {
   //Geneting token
   const resetToken = cryto.randomBytes(20).toString("hex");
 
-  //Hasing and adding resetPasswordToken to UserChema
+  //Có và thêm resetPasswordToken to UserChema
   this.resetPasswordToken = cryto
     .createHash("sha256")
     .update(resetToken)
